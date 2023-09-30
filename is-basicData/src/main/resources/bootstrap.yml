@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: is-basicData
+
+#默认使用7214端口
+server:
+  port: 7216
