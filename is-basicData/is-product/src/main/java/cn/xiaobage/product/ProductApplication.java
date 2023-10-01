@@ -1,13 +1,13 @@
-package cn.xiaobage.basicData;
+package cn.xiaobage.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BasicDataApplication {
+public class ProductApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BasicDataApplication.class, args);
+        SpringApplication.run(ProductApplication.class, args);
     }
 
 }

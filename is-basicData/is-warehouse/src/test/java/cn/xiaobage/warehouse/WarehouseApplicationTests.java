@@ -1,10 +1,10 @@
-package cn.xiaobage.config;
+package cn.xiaobage.warehouse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConfigApplicationTests {
+class WarehouseApplicationTests {
 
     @Test
     void contextLoads() {

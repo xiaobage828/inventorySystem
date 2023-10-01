@@ -1,13 +1,13 @@
-package cn.xiaobage.config;
+package cn.xiaobage.warehouse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConfigApplication {
+public class WarehouseApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigApplication.class, args);
+        SpringApplication.run(WarehouseApplication.class, args);
     }
 
 }

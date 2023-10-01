@@ -1,13 +1,13 @@
-package cn.xiaobage.config;
+package cn.xiaobage.employee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConfigApplication {
+public class EmployeeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigApplication.class, args);
+        SpringApplication.run(EmployeeApplication.class, args);
     }
 
 }

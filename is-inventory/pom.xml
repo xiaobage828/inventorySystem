@@ -7,16 +7,10 @@
         <artifactId>inventorySystem</artifactId>
         <version>IS.2023.09.30</version>
     </parent>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <artifactId>is-inventory</artifactId>
 
     <dependencies>
-
-        <!--网关-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>cn.xiaobage</groupId>

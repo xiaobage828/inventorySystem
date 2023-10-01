@@ -7,16 +7,10 @@
         <artifactId>inventorySystem</artifactId>
         <version>IS.2023.09.30</version>
     </parent>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <artifactId>is-warning</artifactId>
 
     <dependencies>
-
-        <!--网关-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>cn.xiaobage</groupId>
@@ -65,7 +59,7 @@
                 <version>2.5.3</version>
                 <configuration>
                     <!-- main方法所在类。 -->
-                    <mainClass>cn.xiaobage.basicData.BasicDataApplication</mainClass>
+                    <mainClass>employee.BasicDataApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
