@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.xiaobage.common.CommonApplication
+cn.xiaobage.common.AutoIsBaseCommon

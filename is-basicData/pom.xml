@@ -11,7 +11,7 @@
     <artifactId>is-basicData</artifactId>
 
     <modules>
-        <module>is-employee</module>
+        <module>is-personnel</module>
         <module>is-product</module>
         <module>is-warehouse</module>
     </modules>

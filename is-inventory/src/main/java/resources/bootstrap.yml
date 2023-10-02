@@ -1,7 +1,7 @@
 spring:
   application:
-    name: is-user
+    name: is-inventory
 
-#默认使用7214端口
+#默认使用7218端口
 server:
-  port: 7216
+  port: 7218

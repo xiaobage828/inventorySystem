@@ -1,10 +1,10 @@
-package cn.xiaobage.employee;
+package cn.xiaobage.personnel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeApplicationTests {
+class PersonnelApplicationTests {
 
     @Test
     void contextLoads() {

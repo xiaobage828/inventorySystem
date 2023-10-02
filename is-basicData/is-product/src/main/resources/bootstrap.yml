@@ -4,4 +4,4 @@ spring:
 
 #默认使用7214端口
 server:
-  port: 7216
+  port: 7214

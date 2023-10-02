@@ -1,7 +1,7 @@
 spring:
   application:
-    name: is-product
+    name: is-warehouse
 
-#默认使用7214端口
+#默认使用7216端口
 server:
   port: 7216
