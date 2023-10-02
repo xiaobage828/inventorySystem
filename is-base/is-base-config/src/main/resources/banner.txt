@@ -1,0 +1,11 @@
+${AnsiColor.BRIGHT_RED}
+88      88 88        88888888
+  88  88   88        88    88
+    88     88888888  88888888
+  88  88   88    88        88
+88      88 88888888  88888888
+${AnsiColor.CYAN}
+欢迎使用本项目，作者：xiaobage
+${AnsiColor.YELLOW}
+SpringBoot版本：${spring-boot.version}
+

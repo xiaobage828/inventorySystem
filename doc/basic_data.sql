@@ -13,3 +13,15 @@ USE basic_data;
     There just design product, warehouse, employee.
 
     */
+/**
+  database employee
+ */
+
+
+/**
+  database product
+ */
+
+/**
+  database warehouse
+ */
