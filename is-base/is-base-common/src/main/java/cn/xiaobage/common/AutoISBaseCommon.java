@@ -5,5 +5,4 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = {"cn.xiaobage"})
-public class AutoIsBaseCommon {
-}
+public class AutoISBaseCommon {}

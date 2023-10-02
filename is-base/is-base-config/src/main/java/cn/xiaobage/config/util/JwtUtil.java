@@ -74,16 +74,16 @@ public class JwtUtil {
     }
 
 
-    public static void main(String[] args) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("name", "j3");
-
-        String token = createToken(params);
-
-        System.out.println(token);
-
-        Map<String, Object> stringObjectMap = verifyToken(token + 1);
-
-        System.out.println(stringObjectMap);
-    }
+//    public static void main(String[] args) {
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("name", "j3");
+//
+//        String token = createToken(params);
+//
+//        System.out.println(token);
+//
+//        Map<String, Object> stringObjectMap = verifyToken(token + 1);
+//
+//        System.out.println(stringObjectMap);
+//    }
 }

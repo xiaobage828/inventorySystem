@@ -1,13 +1,13 @@
 is:
-  host: 127.0.0.1
+  host: localhost
   mysql-port: 3306
-  nacos-port: ENC(BcdcabRwBBA7uZjeYhsUiQSBRR0jbaFGStYUBW6XfS7v2wPlGMu/A5pycGkXjoLv)
-  redis-port: ENC(e3Mj+r0/c3lyB5fED16jYA06v8PRlB3reoHgWvmvbAVQUBUQA9q/sSvkTuTfbPc1)
-  druid_password: ENC(dt7eo1i+3pVrhVI+cJicCa0AsP1mhq9wbwRJ7vOAt+TQtbLZr1Sq+oSLHmmLosz3)
-  mq-host1: ENC(3BCpEOcT+EQydXwv3rGAABquKt4CgGP3J7+FU9FmRp9/m5N/raQmNQYzuiA7N5T8)
-  mq-port1: ENC(ci0eGG90xENVUh5GQyelub0dQaDkJqNg19k/2LARa6J/icVgzo4s0atqag0xWDyl)
-  mq-host2: ENC(mUF8TbTk79WcSyG05+eoIrqUSGvQgWFGnKXMO8g2u/XkKumOK4tht2rEc9bzzqCM)
-  mq-port2: ENC(d6wkpbfJrJfmkVQD7uFoMIKCvtzC8gtA+RDhcl0Yb2k+rxzgk4L+fBC+fU5AU33J)
+  nacos-port: 4408
+  redis-port: 6379
+  druid-password: 123456
+  mq-host1: localhost
+  mq-port1: 10911
+  mq-host2: localhost
+  mq-port2: 10915
 #nacos
 nacos:
   #dev
@@ -16,8 +16,8 @@ nacos:
 DB_HOST: ${is.host}:${is.mysql-port}
 DB_NAME:
 DB_USERNAME: root
-DB_PASSWORD: ENC(dt7eo1i+3pVrhVI+cJicCa0AsP1mhq9wbwRJ7vOAt+TQtbLZr1Sq+oSLHmmLosz3)
-REDIS_PASSWORD: ENC(dt7eo1i+3pVrhVI+cJicCa0AsP1mhq9wbwRJ7vOAt+TQtbLZr1Sq+oSLHmmLosz3)
+DB_PASSWORD: 123456
+REDIS_PASSWORD: redis6379
 
 
 MQ_NAME_SERVER: ${is.mq-host1}:${is.mq-port1};${is.mq-host2}:${is.mq-port2}

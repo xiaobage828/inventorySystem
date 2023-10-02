@@ -1,7 +1,3 @@
-#spring:
-#  application:
-#    name: is-personnel
-
 #默认使用7212端口
 server:
   port: 7212

@@ -7,7 +7,7 @@
         <artifactId>inventorySystem</artifactId>
         <version>IS.2023.09.30</version>
     </parent>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <artifactId>is-inventory</artifactId>
 
     <dependencies>
@@ -16,26 +16,6 @@
             <groupId>cn.xiaobage</groupId>
             <artifactId>is-base-common</artifactId>
             <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                </exclusion>
-                <!--mybatis-plus-->
-                <exclusion>
-                    <groupId>com.baomidou</groupId>
-                    <artifactId>mybatis-plus-boot-starter</artifactId>
-                </exclusion>
-                <!--阿里连接池-->
-                <exclusion>
-                    <groupId>com.alibaba</groupId>
-                    <artifactId>druid</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

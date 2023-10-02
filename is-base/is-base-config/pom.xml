@@ -13,6 +13,11 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>cn.xiaobage</groupId>
+            <artifactId>is-pom</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
