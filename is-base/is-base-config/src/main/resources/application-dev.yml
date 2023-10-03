@@ -14,10 +14,13 @@ nacos:
   namespace: 79622650-2ad0-4651-945e-82929157836f
 #database
 DB_HOST: ${is.host}:${is.mysql-port}
-DB_NAME:
+DB_NAME_PERSONNEL: personnel
 DB_USERNAME: root
 DB_PASSWORD: 123456
 REDIS_PASSWORD: redis6379
+
+DB_NAME_PRODUCT: product
+DB_NAME_WAREHOUSE: personnel
 
 
 MQ_NAME_SERVER: ${is.mq-host1}:${is.mq-port1};${is.mq-host2}:${is.mq-port2}

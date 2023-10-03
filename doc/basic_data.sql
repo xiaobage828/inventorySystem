@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
     empId INT(11) PRIMARY KEY AUTO_INCREMENT,
     emp_name VARCHAR(120) NOT NULL,
-    orgId INT(11) NOT NULL,
+    org_id INT(11) NOT NULL,
     salary DECIMAL NOT NULL
 );
 
@@ -30,6 +30,7 @@ DROP TABLE IF EXISTS organization;
 CREATE TABLE organization (
     id INT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(120) NOT NULL,
+    path tinytext NOT NULL ,
     parent_id INT
 );
 
