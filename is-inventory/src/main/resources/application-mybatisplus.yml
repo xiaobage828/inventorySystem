@@ -5,7 +5,7 @@ spring.datasource:
   druid:
 #    driverClassName: com.mysql.cj.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST}/${DB_NAME_PERSONNEL}?useUnicode=true&useSSL=false&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://${DB_HOST}/${DB_NAME}?useUnicode=true&useSSL=false&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     #     配置初始化大小、最小、最大线程数
@@ -35,8 +35,10 @@ spring.datasource:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
-#mybatis-plus:
-#  map-underscore-to-camel-case: true
-#  type-enums-package: cn.xiaobage.bldbase.enums,cn.xiaobage.botqq.enums,cn.xiaobage.lucky.enums
-
-mybatis-plus.configuration.log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
