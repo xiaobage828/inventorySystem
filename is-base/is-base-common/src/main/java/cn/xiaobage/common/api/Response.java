@@ -1,4 +1,4 @@
-package cn.xiaobage.personnel.infrastructure.common.api;
+package cn.xiaobage.common.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package cn.xiaobage.waining.infrastructure.util;
+package cn.xiaobage.warning.infrastructure.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

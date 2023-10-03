@@ -1,4 +1,4 @@
-package cn.xiaobage.personnel;
+package cn.xiaobage.warning;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -8,16 +8,17 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableFeignClients(basePackages = "cn.xiaobage.personnel.infrastructure.client")
+
+@EnableFeignClients(basePackages = "cn.xiaobage.warning.infrastructure.client")
 @EnableTransactionManagement
 @ComponentScan("cn.xiaobage")
 @EnableDiscoveryClient
-@MapperScan("cn.xiaobage.personnel.domain.**.mapper")
+@MapperScan("cn.xiaobage.warning.domain.**.mapper")
 @SpringBootApplication
-public class PersonnelApplication {
+public class WarningApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PersonnelApplication.class, args);
+        SpringApplication.run(WarningApplication.class, args);
     }
 
 }

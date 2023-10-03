@@ -39,7 +39,7 @@
                 <version>2.5.3</version>
                 <configuration>
                     <!-- main方法所在类。 -->
-                    <mainClass>cn.xiaobage.waining.WainingApplication</mainClass>
+                    <mainClass>cn.xiaobage.warning.WarningApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
