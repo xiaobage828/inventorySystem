@@ -38,8 +38,8 @@ CREATE TABLE organization (
     id INT PRIMARY KEY AUTO_INCREMENT COMMENT '组织机构ID',
     `name` VARCHAR(120) NOT NULL COMMENT '组织名称',
     path TINYTEXT NOT NULL COMMENT '组织路径',
-    parent_id INT COMMENT '父级组织ID',
-    KEY `idx_parent_id` (`parent_id`)
+    parent_org_id INT COMMENT '父级组织ID',
+    KEY `idx_parent_org_id` (`parent_org_id`)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='组织机构表';
 
 /**
@@ -119,5 +119,5 @@ CREATE TABLE warehouse (
     `address` VARCHAR(200) NOT NULL COMMENT '仓库地址',
     `person_in_charge` INT(11) NOT NULL COMMENT '负责人，来自employee表的emp_id',
     parent_warehouse_id INT COMMENT '父级仓库ID',
-    KEY `idx_parent_id` (`parent_warehouse_id`)
+    KEY `idx_parent_warehouse_id` (`parent_warehouse_id`)
 )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='仓库信息';
