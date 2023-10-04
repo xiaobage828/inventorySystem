@@ -18,8 +18,6 @@ CREATE TABLE inventory (
     total_quantity INT(11) NOT NULL DEFAULT 0 COMMENT '剩余库存',
     lock_quantity INT(11) NOT NULL DEFAULT 0 COMMENT '锁定库存',
     damaged_quantity INT(11) NOT NULL DEFAULT 0 COMMENT '损坏库存',
-    minimum_inventory INT(11) NOT NULL DEFAULT 0 COMMENT '最小库存',
-    maximum_inventory INT(11)  COMMENT '最大库存',
     units VARCHAR(100) NOT NULL COMMENT '计量单位',
     create_time DATE NOT NULL COMMENT '创建时间',
     update_time DATE NOT NULL COMMENT '修改时间',
