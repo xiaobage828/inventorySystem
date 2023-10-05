@@ -1,6 +1,6 @@
-#默认使用7216端口
+#默认使用7224端口
 server:
-  port: 7216
+  port: 7224
 
 spring:
   application:

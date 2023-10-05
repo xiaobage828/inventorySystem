@@ -1,14 +1,16 @@
-package cn.xiaobage.domainEvent.domain.domainEvent.entity;
+package cn.xiaobage.domainEvent.interfaces.dto;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Data
-public class DomainEvent {
+public class DomainEventDTO {
 
     private Long id;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date time;
 
     private String serverName;

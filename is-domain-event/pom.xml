@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.xiaobage</groupId>
-        <artifactId>is-basic-data</artifactId>
+        <artifactId>inventorySystem</artifactId>
         <version>IS.2023.09.30</version>
     </parent>
     <packaging>jar</packaging>
-    <artifactId>is-warehouse</artifactId>
+    <artifactId>is-domain-event</artifactId>
 
     <dependencies>
 
@@ -39,7 +39,7 @@
                 <version>2.5.3</version>
                 <configuration>
                     <!-- main方法所在类。 -->
-                    <mainClass>employee.EmployeeApplication</mainClass>
+                    <mainClass>cn.xiaobage.domainEvent.DomainEventApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

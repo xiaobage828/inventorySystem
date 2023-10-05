@@ -11,7 +11,7 @@ is:
 
 #database
 DB_HOST: ${is.host}:${is.mysql-port}
-DB_NAME: warehouse
+DB_NAME: domain_event
 DB_USERNAME: root
 DB_PASSWORD: 123456
 REDIS_PASSWORD: redis6379
