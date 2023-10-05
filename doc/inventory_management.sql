@@ -19,8 +19,8 @@ CREATE TABLE inventory (
     lock_quantity INT(11) NOT NULL DEFAULT 0 COMMENT '锁定库存',
     damaged_quantity INT(11) NOT NULL DEFAULT 0 COMMENT '损坏库存',
     units VARCHAR(100) NOT NULL COMMENT '计量单位',
-    create_time DATE NOT NULL COMMENT '创建时间',
-    update_time DATE NOT NULL COMMENT '修改时间',
+    create_time DATETIME NOT NULL COMMENT '创建时间',
+    update_time DATETIME NOT NULL COMMENT '修改时间',
     UNIQUE KEY `uq_warehouse_id_product_id` (`warehouse_id`,`product_id`),
     KEY `idx_product_id` (`product_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='库存';
@@ -36,9 +36,9 @@ CREATE TABLE warehouse_in_record (
     remark TINYTEXT COMMENT '备注',
     trader VARCHAR(200) COMMENT '交易方',
     trading_time DATE NOT NULL COMMENT '交易时间',
-    time_of_making DATE NOT NULL COMMENT '单据制作时间',
+    time_of_making DATETIME NOT NULL COMMENT '单据制作时间',
     maker INT(11) NOT NULL  COMMENT '制单人，来自employee表的emp_id',
-    create_time DATE NOT NULL COMMENT '创建时间',
+    create_time DATETIME NOT NULL COMMENT '创建时间',
     UNIQUE KEY `uq_record_code` (`record_code`),
     KEY `idx_inventory_id` (`inventory_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='入库单';
@@ -55,9 +55,9 @@ CREATE TABLE outbound_delivery_order (
     remark TINYTEXT COMMENT '备注',
     trader VARCHAR(200) COMMENT '交易方',
     trading_time DATE NOT NULL COMMENT '交易时间',
-    time_of_making DATE NOT NULL COMMENT '单据制作时间',
+    time_of_making DATETIME NOT NULL COMMENT '单据制作时间',
     maker INT(11) NOT NULL  COMMENT '制单人，来自employee表的emp_id',
-    create_time DATE NOT NULL COMMENT '创建时间',
+    create_time DATETIME NOT NULL COMMENT '创建时间',
     UNIQUE KEY `uq_record_code` (`record_code`),
     KEY `idx_inventory_id` (`inventory_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='出库单';
