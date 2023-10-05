@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaobage.product.domain.product.repository.mapper.BrandMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.xiaobage.product.domain.product.repository.po.BrandPO">
+        <id column="id" property="id" />
+        <result column="brand_cn_name" property="brandCnName" />
+        <result column="brand_en_name" property="brandEnName" />
+        <result column="logo_url" property="logoUrl" />
+        <result column="brand_story" property="brandStory" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, brand_cn_name, brand_en_name, logo_url, brand_story
+    </sql>
+
+</mapper>
