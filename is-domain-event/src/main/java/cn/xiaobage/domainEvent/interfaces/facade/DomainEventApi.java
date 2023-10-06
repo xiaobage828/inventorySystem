@@ -7,6 +7,7 @@ import cn.xiaobage.domainEvent.interfaces.assembler.DomainEventAssembler;
 import cn.xiaobage.domainEvent.interfaces.dto.DomainEventDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class DomainEventApi {
     DomainEventApplicationService domainEventApplicationService;
 
     @PostMapping("/save")
-    public Response save(DomainEventDTO dto){
+    public Response save(@RequestBody DomainEventDTO dto){
         return Response.ok(domainEventApplicationService.save(DomainEventAssembler.toDO(dto)));
     }
 }

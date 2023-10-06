@@ -8,7 +8,7 @@
         <version>IS.2023.09.30</version>
     </parent>
     <packaging>pom</packaging>
-    <artifactId>is-basicData</artifactId>
+    <artifactId>is-basic-data</artifactId>
 
     <modules>
         <module>is-personnel</module>

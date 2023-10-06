@@ -23,7 +23,8 @@ public class ProductApi {
 
     @GetMapping("/queryProduct")
     public Response queryProduct(@RequestParam("productId") Long productId){
-        return Response.ok(productApplicationService.queryProduct(productId));
+        Response response = Response.ok(productApplicationService.queryProduct(productId));
+        return response;
     }
 
 }

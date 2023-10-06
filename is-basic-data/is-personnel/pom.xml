@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.xiaobage</groupId>
-        <artifactId>is-basicData</artifactId>
+        <artifactId>is-basic-data</artifactId>
         <version>IS.2023.09.30</version>
     </parent>
     <packaging>jar</packaging>

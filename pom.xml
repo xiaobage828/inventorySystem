@@ -53,7 +53,8 @@
         <module>is-pom</module>
         <module>is-base</module>
         <module>is-gateway</module>
-        <module>is-basicData</module>
+        <module>is-basic-data</module>
+        <module>is-domain-event</module>
         <module>is-inventory</module>
         <module>is-warning</module>
     </modules>
