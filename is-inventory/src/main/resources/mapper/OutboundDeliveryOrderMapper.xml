@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaobage.inventory.domain.inventory.repository.mapper.OutboundDeliveryOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.xiaobage.inventory.domain.inventory.repository.po.OutboundDeliveryOrderPO">
+        <id column="id" property="id" />
+        <result column="record_code" property="recordCode" />
+        <result column="inventory_id" property="inventoryId" />
+        <result column="tag" property="tag" />
+        <result column="quantity" property="quantity" />
+        <result column="units" property="units" />
+        <result column="remark" property="remark" />
+        <result column="trader" property="trader" />
+        <result column="trading_time" property="tradingTime" />
+        <result column="time_of_making" property="timeOfMaking" />
+        <result column="maker" property="maker" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, record_code, inventory_id, tag, quantity, units, remark, trader, trading_time, time_of_making, maker, create_time
+    </sql>
+
+</mapper>
