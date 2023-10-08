@@ -1,12 +1,14 @@
 is:
   mq-host1: localhost
-  mq-port1: 10911
-  mq-host2: localhost
-  mq-port2: 10915
+  mq-port1: 9876
+  host: localhost
+  redis-port: 6379
+#  mq-host2: localhost
+#  mq-port2: 10915
 #nacos
 nacos:
   #dev
   namespace: 79622650-2ad0-4651-945e-82929157836f
 
-MQ_NAME_SERVER: ${is.mq-host1}:${is.mq-port1};${is.mq-host2}:${is.mq-port2}
+MQ_NAME_SERVER: ${is.mq-host1}:${is.mq-port1}
 MQ_GROUP: inventory_management

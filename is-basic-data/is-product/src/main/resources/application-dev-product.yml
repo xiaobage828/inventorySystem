@@ -4,10 +4,6 @@ is:
   nacos-port: 4408
   redis-port: 6379
   druid-password: 123456
-  mq-host1: localhost
-  mq-port1: 10911
-  mq-host2: localhost
-  mq-port2: 10915
 
 #database
 DB_HOST: ${is.host}:${is.mysql-port}

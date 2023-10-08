@@ -3,3 +3,12 @@ spring:
     host: ${is.host}
     port: ${is.redis-port}
     password: ${REDIS_PASSWORD}
+redisson:
+  codec: org.redisson.codec.JsonJacksonCodec
+  threads: 4
+  netty:
+    threads: 4
+  single-server-config:
+    address: "redis://127.0.0.1:6379"
+    password: ${REDIS_PASSWORD}
+    database: 0
