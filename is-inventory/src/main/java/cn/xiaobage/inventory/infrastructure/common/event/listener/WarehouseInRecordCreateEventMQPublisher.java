@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(1)
-public class WarehouseInRecordCreateEventMQSendListener {
+public class WarehouseInRecordCreateEventMQPublisher {
 
     @Autowired
     RocketMQTemplate rocketMQTemplate;

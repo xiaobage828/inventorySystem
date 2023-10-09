@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Order(1)
 @Component
-public class InventoryCreateEventMQSendListener {
+public class InventoryCreateEventMQPublisher {
 
     @Autowired
     RocketMQTemplate rocketMQTemplate;
