@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 public class EmployeeFactory {
 
     public Employee getEmployee(EmployeePO po){
-        if(null == po) return null;
         Employee employee = new Employee();
         employee.setEmpId(po.getEmpId());
         employee.setEmpName(po.getEmpName());
