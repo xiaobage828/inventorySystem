@@ -2,8 +2,6 @@ package cn.xiaobage.inventory.application.service;
 
 
 import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
-import cn.xiaobage.inventory.domain.inventory.entity.OutboundDeliveryOrder;
-import cn.xiaobage.inventory.domain.inventory.entity.WarehouseInRecord;
 import cn.xiaobage.inventory.domain.inventory.event.InventoryCreateEvent;
 import cn.xiaobage.inventory.domain.inventory.service.InventoryDomainService;
 import cn.xiaobage.inventory.infrastructure.client.DomainEventFeignClient;
@@ -49,5 +47,12 @@ public class InventoryApplicationService {
         return updateRecord;
     }
 
+    public int inventoryIncrement(Long inventoryId, Integer quantity, LocalDate updateTime){
+        return inventoryDomainService.inventoryIncrement(inventoryId,quantity,updateTime);
+    }
+
+    public int inventoryDecrement(Long inventoryId, Integer quantity, LocalDate updateTime ){
+        return inventoryDomainService.inventoryDecrement(inventoryId,quantity,updateTime);
+    }
 
 }

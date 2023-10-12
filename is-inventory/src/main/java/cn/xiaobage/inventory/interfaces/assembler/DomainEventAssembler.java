@@ -1,6 +1,6 @@
 package cn.xiaobage.inventory.interfaces.assembler;
 
-import cn.xiaobage.inventory.infrastructure.common.event.DomainEvent;
+import cn.xiaobage.common.event.DomainEvent;
 import cn.xiaobage.inventory.interfaces.dto.DomainEventDTO;
 
 public class DomainEventAssembler {

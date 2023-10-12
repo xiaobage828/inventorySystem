@@ -1,6 +1,6 @@
 package cn.xiaobage.inventory.infrastructure.client;
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.inventory.interfaces.dto.DomainEventDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

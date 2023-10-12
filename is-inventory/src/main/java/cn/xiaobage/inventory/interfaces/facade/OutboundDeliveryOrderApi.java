@@ -1,7 +1,7 @@
 package cn.xiaobage.inventory.interfaces.facade;
 
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.inventory.application.service.OutboundDeliveryOrderApplicationService;
 import cn.xiaobage.inventory.interfaces.assembler.OutboundDeliveryOrderAssembler;
 import cn.xiaobage.inventory.interfaces.dto.OutboundDeliveryOrderDTO;

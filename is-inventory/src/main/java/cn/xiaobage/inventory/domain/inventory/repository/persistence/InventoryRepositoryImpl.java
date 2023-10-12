@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -38,5 +39,15 @@ public class InventoryRepositoryImpl implements InventoryRepository {
     @Override
     public int insertInventory(InventoryPO inventoryPO) {
         return inventoryMapper.insert(inventoryPO);
+    }
+
+    @Override
+    public int inventoryIncrement(Long inventoryId, Integer quantity, LocalDate updateTime) {
+        return inventoryMapper.inventoryIncrement(inventoryId,quantity,updateTime);
+    }
+
+    @Override
+    public int inventoryDecrement(Long inventoryId, Integer quantity, LocalDate updateTime) {
+        return inventoryMapper.inventoryDecrement(inventoryId,quantity,updateTime);
     }
 }

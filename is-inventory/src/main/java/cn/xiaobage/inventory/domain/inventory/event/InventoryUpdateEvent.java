@@ -7,10 +7,10 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.Date;
 
-public class InventoryCreateEvent extends DomainEvent {
+public class InventoryUpdateEvent extends DomainEvent {
 
-    public static InventoryCreateEvent create(Inventory inventory){
-        InventoryCreateEvent event = new InventoryCreateEvent();
+    public static InventoryUpdateEvent create(Inventory inventory){
+        InventoryUpdateEvent event = new InventoryUpdateEvent();
         event.setId(IdUtil.getSnowflakeNextId());
         event.setServerName("is-inventory");
         event.setClassName(inventory.getClass().getName());

@@ -13,6 +13,6 @@ public class InventoryCreateEventListener{
 
     @EventListener
     public void onApplicationEvent(InventoryCreateEvent inventoryCreateEvent) {
-        log.info("inventoryCreateEvent:==>",inventoryCreateEvent);
+        log.info("inventoryCreateEvent:==>{}",inventoryCreateEvent);
     }
 }

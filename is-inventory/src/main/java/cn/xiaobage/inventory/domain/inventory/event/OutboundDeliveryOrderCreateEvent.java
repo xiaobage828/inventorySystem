@@ -2,8 +2,7 @@ package cn.xiaobage.inventory.domain.inventory.event;
 
 import cn.hutool.core.util.IdUtil;
 import cn.xiaobage.inventory.domain.inventory.entity.OutboundDeliveryOrder;
-import cn.xiaobage.inventory.domain.inventory.entity.WarehouseInRecord;
-import cn.xiaobage.inventory.infrastructure.common.event.DomainEvent;
+import cn.xiaobage.common.event.DomainEvent;
 import com.alibaba.fastjson.JSON;
 
 import java.util.Date;

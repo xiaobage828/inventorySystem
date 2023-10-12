@@ -1,7 +1,7 @@
 package cn.xiaobage.inventory.interfaces.facade;
 
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.inventory.application.service.InventoryApplicationService;
 import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.interfaces.assembler.InventoryAssembler;

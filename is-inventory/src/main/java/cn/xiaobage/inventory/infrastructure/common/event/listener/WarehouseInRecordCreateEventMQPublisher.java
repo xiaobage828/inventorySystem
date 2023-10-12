@@ -16,6 +16,6 @@ public class WarehouseInRecordCreateEventMQPublisher {
 
     @EventListener
     public void onApplicationEvent(WarehouseInRecordCreateEvent warehouseInRecordCreateEvent) {
-        rocketMQTemplate.convertAndSend("warehouseInRecord-create",warehouseInRecordCreateEvent);
+        rocketMQTemplate.convertAndSend("warehouse-in-record-create",warehouseInRecordCreateEvent);
     }
 }

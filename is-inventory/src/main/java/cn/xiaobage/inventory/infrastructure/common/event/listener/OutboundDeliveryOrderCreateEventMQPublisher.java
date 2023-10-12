@@ -16,6 +16,6 @@ public class OutboundDeliveryOrderCreateEventMQPublisher {
 
     @EventListener
     public void onApplicationEvent(OutboundDeliveryOrderCreateEvent outboundDeliveryOrderCreateEvent) {
-        rocketMQTemplate.convertAndSend("outboundDeliveryOrder-create",outboundDeliveryOrderCreateEvent);
+        rocketMQTemplate.convertAndSend("outbound-delivery-order-create",outboundDeliveryOrderCreateEvent);
     }
 }

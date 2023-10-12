@@ -1,24 +1,32 @@
 package cn.xiaobage.inventory.infrastructure.common.redis;
 
-import cn.hutool.json.JSONObject;
 import cn.xiaobage.config.util.FileLoad;
 import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.domain.inventory.entity.OutboundDeliveryOrder;
 import cn.xiaobage.inventory.domain.inventory.entity.WarehouseInRecord;
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
+import java.util.Map;
 
 @Slf4j
 @Component
 public class RedisOpsInventory {
 
+
     @Autowired
-    RedisTemplate redisTemplate;
+    StringRedisTemplate stringRedisTemplate;
+
 
     private static String inventoryDeductionLua;
 
@@ -30,20 +38,23 @@ public class RedisOpsInventory {
     }
 
     public Inventory  saveInventory(Inventory inventory){
-        JSONObject jsonObject = new JSONObject(inventory);
-        redisTemplate.opsForHash().putAll(RedisKeyPrefixConst.InventoryCache+inventory.getId(),jsonObject);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModules(new JavaTimeModule(), new Jdk8Module());
+        Map<String,String> map = objectMapper.convertValue(inventory,new TypeReference<Map<String,String>>(){});
+        stringRedisTemplate.opsForHash().putAll(RedisKeyPrefixConst.InventoryCache+inventory.getId(), map);
         return inventory;
     }
 
-    public Long  invokeIncrementLua(WarehouseInRecord warehouseInRecord){
-        RedisScript<Long> redisScript = new DefaultRedisScript(inventoryIncrementLua,Long.class);
-        Long inventoryId = (Long) redisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + warehouseInRecord.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),warehouseInRecord.getQuantity(),warehouseInRecord.getCreateTime());
-        return inventoryId;
+    public Inventory invokeIncrementLua(WarehouseInRecord warehouseInRecord){
+        RedisScript<String> redisScript = new DefaultRedisScript(inventoryIncrementLua,String.class);
+        String inventory =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + warehouseInRecord.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),warehouseInRecord.getQuantity().toString(),warehouseInRecord.getCreateTime().toString());
+        return JSONObject.parseObject(inventory,Inventory.class);
     }
 
-    public Long  invokeInventoryDeductionLua(OutboundDeliveryOrder outboundDeliveryOrder){
-        RedisScript<Long> redisScript = new DefaultRedisScript(inventoryDeductionLua,Long.class);
-        Long inventoryId = (Long) redisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + outboundDeliveryOrder.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),outboundDeliveryOrder.getQuantity(),outboundDeliveryOrder.getCreateTime());
-        return inventoryId;
+    public Inventory  invokeInventoryDeductionLua(OutboundDeliveryOrder outboundDeliveryOrder){
+        RedisScript<String> redisScript = new DefaultRedisScript(inventoryDeductionLua,String.class);
+        String inventory =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + outboundDeliveryOrder.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),outboundDeliveryOrder.getQuantity().toString(),outboundDeliveryOrder.getCreateTime().toString());
+        return JSONObject.parseObject(inventory,Inventory.class);
     }
+
 }
