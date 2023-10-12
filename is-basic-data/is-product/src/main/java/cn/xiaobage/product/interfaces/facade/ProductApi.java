@@ -3,6 +3,7 @@ package cn.xiaobage.product.interfaces.facade;
 
 import cn.xiaobage.config.api.Response;
 import cn.xiaobage.product.application.service.ProductApplicationService;
+import cn.xiaobage.product.interfaces.assembler.ProductAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class ProductApi {
 
     @GetMapping("/queryProduct")
     public Response queryProduct(@RequestParam("productId") Long productId){
-        Response response = Response.ok(productApplicationService.queryProduct(productId));
+        Response response = Response.ok(ProductAssembler.toDTO(productApplicationService.queryProduct(productId)));
         return response;
     }
 

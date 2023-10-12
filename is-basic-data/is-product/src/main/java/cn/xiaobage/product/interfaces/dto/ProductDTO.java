@@ -3,7 +3,7 @@ package cn.xiaobage.product.interfaces.dto;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class ProductDTO {
@@ -30,7 +30,7 @@ public class ProductDTO {
 
     private String description;
 
-    private LocalDate createTime;
+    private Date createTime;
 
-    private LocalDate updateTime;
+    private Date updateTime;
 }

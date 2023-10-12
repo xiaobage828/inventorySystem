@@ -2,10 +2,10 @@ package cn.xiaobage.product.domain.product.entity;
 
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * <p>
@@ -40,8 +40,10 @@ public class Product {
 
     private String description;
 
-    private LocalDate createTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
-    private LocalDate updateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 
 }
