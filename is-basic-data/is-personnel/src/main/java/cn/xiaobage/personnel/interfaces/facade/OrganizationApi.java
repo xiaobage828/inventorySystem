@@ -1,9 +1,10 @@
 package cn.xiaobage.personnel.interfaces.facade;
 
-import cn.xiaobage.common.api.Response;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import cn.xiaobage.config.api.Response;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/organization")
 public class OrganizationApi {
 
 

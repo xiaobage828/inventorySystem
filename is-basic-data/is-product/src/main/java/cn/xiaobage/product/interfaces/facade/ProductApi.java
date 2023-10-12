@@ -1,7 +1,7 @@
 package cn.xiaobage.product.interfaces.facade;
 
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.product.application.service.ProductApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

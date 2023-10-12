@@ -1,6 +1,6 @@
 package cn.xiaobage.personnel.interfaces.facade;
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.personnel.application.service.EmployeeApplicationService;
 import cn.xiaobage.personnel.interfaces.assembler.EmployeeAssembler;
 import org.springframework.beans.factory.annotation.Autowired;

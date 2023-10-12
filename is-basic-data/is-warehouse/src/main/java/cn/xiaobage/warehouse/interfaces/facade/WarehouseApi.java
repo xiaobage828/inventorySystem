@@ -1,7 +1,7 @@
 package cn.xiaobage.warehouse.interfaces.facade;
 
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.warehouse.application.service.WarehouseApplicationService;
 import cn.xiaobage.warehouse.interfaces.assembler.WarehouseAssembler;
 import cn.xiaobage.warehouse.interfaces.dto.WarehouseDTO;
