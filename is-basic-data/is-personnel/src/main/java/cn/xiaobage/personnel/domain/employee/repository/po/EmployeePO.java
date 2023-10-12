@@ -32,6 +32,4 @@ public class EmployeePO implements Serializable {
 
     BigDecimal salary;
 
-    @TableField(exist = false)
-    OrganizationPO organization;
 }

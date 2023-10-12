@@ -28,5 +28,4 @@ public class OrganizationPO implements Serializable {
 
     String parentId;
 
-    OrganizationPO parentOrg;
 }
