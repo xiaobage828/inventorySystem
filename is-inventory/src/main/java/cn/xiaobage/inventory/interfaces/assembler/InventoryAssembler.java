@@ -4,8 +4,6 @@ import cn.hutool.core.util.IdUtil;
 import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.interfaces.dto.InventoryDTO;
 
-import java.time.LocalDate;
-
 public class InventoryAssembler {
 
     public static InventoryDTO toDTO(Inventory inventory){
@@ -24,12 +22,12 @@ public class InventoryAssembler {
 
     public static Inventory toDO(InventoryDTO dto){
         Inventory inventory = new Inventory();
-        inventory.setId(null == dto.getId() ? IdUtil.getSnowflakeNextId() : dto.getId());
+        inventory.setId(dto.getId());
         inventory.setUnits(dto.getUnits());
         inventory.setProductId(dto.getProductId());
         inventory.setLockQuantity(dto.getLockQuantity());
-        inventory.setCreateTime(null == dto.getCreateTime()? LocalDate.now():dto.getCreateTime());
-        inventory.setUpdateTime(null == dto.getUpdateTime()? LocalDate.now():dto.getUpdateTime());
+        inventory.setCreateTime(dto.getCreateTime());
+        inventory.setUpdateTime(dto.getUpdateTime());
         inventory.setDamagedQuantity(dto.getDamagedQuantity());
         inventory.setTotalQuantity(dto.getTotalQuantity());
         inventory.setWarehouseId(dto.getWarehouseId());

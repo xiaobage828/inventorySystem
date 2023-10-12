@@ -1,18 +1,15 @@
 package cn.xiaobage.inventory.interfaces.assembler;
 
-import cn.hutool.core.util.IdUtil;
 import cn.xiaobage.inventory.domain.inventory.entity.WarehouseInRecord;
-import cn.xiaobage.inventory.domain.inventory.repository.po.WarehouseInRecordPO;
 import cn.xiaobage.inventory.interfaces.dto.WarehouseInRecordDTO;
 
-import java.time.LocalDate;
 
 public class WarehouseInRecordAssembler {
 
     public static WarehouseInRecord toDO(WarehouseInRecordDTO dto){
         WarehouseInRecord warehouseInRecord = new WarehouseInRecord();
-        warehouseInRecord.setId(null == dto.getId()? IdUtil.getSnowflakeNextId(): dto.getId());
-        warehouseInRecord.setCreateTime(null == dto.getCreateTime()? LocalDate.now():dto.getCreateTime());
+        warehouseInRecord.setId(dto.getId());
+        warehouseInRecord.setCreateTime(dto.getCreateTime());
         warehouseInRecord.setUnits(dto.getUnits());
         warehouseInRecord.setMaker(dto.getMaker());
         warehouseInRecord.setQuantity(dto.getQuantity());

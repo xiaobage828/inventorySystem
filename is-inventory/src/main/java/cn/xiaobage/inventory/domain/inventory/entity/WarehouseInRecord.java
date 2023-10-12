@@ -1,8 +1,7 @@
 package cn.xiaobage.inventory.domain.inventory.entity;
 
 import lombok.Data;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class WarehouseInRecord {
@@ -23,11 +22,11 @@ public class WarehouseInRecord {
 
     private String trader;
 
-    private LocalDate tradingTime;
+    private Date tradingTime;
 
-    private LocalDate timeOfMaking;
+    private Date timeOfMaking;
 
     private Integer maker;
 
-    private LocalDate createTime;
+    private Date createTime;
 }

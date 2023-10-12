@@ -5,7 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -65,11 +66,11 @@ public class OutboundDeliveryOrderPO implements Serializable {
 
     @ApiModelProperty("交易时间")
     @TableField("trading_time")
-    private LocalDate tradingTime;
+    private Date tradingTime;
 
     @ApiModelProperty("单据制作时间")
     @TableField("time_of_making")
-    private LocalDate timeOfMaking;
+    private Date timeOfMaking;
 
     @ApiModelProperty("制单人，来自employee表的emp_id")
     @TableField("maker")
@@ -77,7 +78,7 @@ public class OutboundDeliveryOrderPO implements Serializable {
 
     @ApiModelProperty("创建时间")
     @TableField("create_time")
-    private LocalDate createTime;
+    private Date createTime;
 
 
 }

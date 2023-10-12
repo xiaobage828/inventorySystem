@@ -3,7 +3,7 @@ package cn.xiaobage.inventory.domain.inventory.repository.facade;
 
 import cn.xiaobage.inventory.domain.inventory.repository.po.InventoryPO;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ public interface InventoryRepository  {
 
     int insertInventory(InventoryPO inventoryPO);
 
-    int inventoryIncrement(Long inventoryId, Integer quantity, LocalDate updateTime);
+    int inventoryIncrement(Long inventoryId, Integer quantity, Date updateTime);
 
-    int inventoryDecrement(Long inventoryId, Integer quantity, LocalDate updateTime);
+    int inventoryDecrement(Long inventoryId, Integer quantity, Date updateTime);
 }

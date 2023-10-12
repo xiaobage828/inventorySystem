@@ -5,8 +5,7 @@ import cn.xiaobage.inventory.domain.inventory.repository.facade.InventoryReposit
 import cn.xiaobage.inventory.domain.inventory.repository.po.InventoryPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,11 +27,11 @@ public class InventoryDomainService {
         return inventoryRepositoryImpl.insertInventory(inventoryFactory.getInventoryPO(inventory));
     }
 
-    public int inventoryIncrement(Long inventoryId, Integer quantity, LocalDate updateTime){
+    public int inventoryIncrement(Long inventoryId, Integer quantity, Date updateTime){
         return inventoryRepositoryImpl.inventoryIncrement(inventoryId,quantity,updateTime);
     }
 
-    public int inventoryDecrement(Long inventoryId, Integer quantity, LocalDate updateTime){
+    public int inventoryDecrement(Long inventoryId, Integer quantity, Date updateTime){
         return inventoryRepositoryImpl.inventoryDecrement(inventoryId,quantity,updateTime);
     }
 }

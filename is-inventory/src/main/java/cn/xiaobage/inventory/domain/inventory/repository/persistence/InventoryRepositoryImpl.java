@@ -6,8 +6,7 @@ import cn.xiaobage.inventory.domain.inventory.repository.po.InventoryPO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,12 +41,12 @@ public class InventoryRepositoryImpl implements InventoryRepository {
     }
 
     @Override
-    public int inventoryIncrement(Long inventoryId, Integer quantity, LocalDate updateTime) {
+    public int inventoryIncrement(Long inventoryId, Integer quantity, Date updateTime) {
         return inventoryMapper.inventoryIncrement(inventoryId,quantity,updateTime);
     }
 
     @Override
-    public int inventoryDecrement(Long inventoryId, Integer quantity, LocalDate updateTime) {
+    public int inventoryDecrement(Long inventoryId, Integer quantity, Date updateTime) {
         return inventoryMapper.inventoryDecrement(inventoryId,quantity,updateTime);
     }
 }

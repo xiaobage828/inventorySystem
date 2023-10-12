@@ -1,9 +1,9 @@
 package cn.xiaobage.inventory.interfaces.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 
 @Data
@@ -25,13 +25,17 @@ public class OutboundDeliveryOrderDTO {
 
     private String trader;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate tradingTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date tradingTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate timeOfMaking;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date timeOfMaking;
 
     private Integer maker;
 
-    private LocalDate createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 }

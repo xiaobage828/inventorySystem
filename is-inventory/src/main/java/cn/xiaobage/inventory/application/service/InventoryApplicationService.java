@@ -10,8 +10,7 @@ import cn.xiaobage.inventory.interfaces.assembler.DomainEventAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -47,11 +46,11 @@ public class InventoryApplicationService {
         return updateRecord;
     }
 
-    public int inventoryIncrement(Long inventoryId, Integer quantity, LocalDate updateTime){
+    public int inventoryIncrement(Long inventoryId, Integer quantity, Date updateTime){
         return inventoryDomainService.inventoryIncrement(inventoryId,quantity,updateTime);
     }
 
-    public int inventoryDecrement(Long inventoryId, Integer quantity, LocalDate updateTime ){
+    public int inventoryDecrement(Long inventoryId, Integer quantity, Date updateTime ){
         return inventoryDomainService.inventoryDecrement(inventoryId,quantity,updateTime);
     }
 
