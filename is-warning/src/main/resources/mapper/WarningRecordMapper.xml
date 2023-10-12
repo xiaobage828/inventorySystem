@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaobage.warning.domain.warning.repository.mapper.WarningRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.xiaobage.warning.domain.warning.repository.po.WarningRecordPO">
+        <id column="id" property="id" />
+        <result column="inventory_id" property="inventoryId" />
+        <result column="current_inventory" property="currentInventory" />
+        <result column="minimum_inventory" property="minimumInventory" />
+        <result column="maximum_inventory" property="maximumInventory" />
+        <result column="units" property="units" />
+        <result column="warning_person" property="warningPerson" />
+        <result column="warning_time" property="warningTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, inventory_id, current_inventory, minimum_inventory, maximum_inventory, units, warning_person, warning_time, create_time
+    </sql>
+
+</mapper>

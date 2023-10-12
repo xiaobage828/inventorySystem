@@ -1,6 +1,6 @@
 package cn.xiaobage.warning.infrastructure.client;
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
