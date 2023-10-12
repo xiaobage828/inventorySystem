@@ -24,7 +24,7 @@ public class WarningRecordApi {
     @Autowired
     WarningRecordApplicationService warningRecordApplicationService;
 
-    @GetMapping("/query")
+    @GetMapping("/query/{warningRecordId}")
     public Response query(Long waringRecordId){
         return Response.ok();
     }

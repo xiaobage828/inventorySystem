@@ -6,10 +6,7 @@ import cn.xiaobage.warning.application.service.InventoryWarningConfigurationAppl
 import cn.xiaobage.warning.interfaces.assembler.InventoryWarningConfigurationAssembler;
 import cn.xiaobage.warning.interfaces.dto.InventoryWarningConfigurationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -27,19 +24,19 @@ public class InventoryWarningConfigurationApi {
     private InventoryWarningConfigurationApplicationService inventoryWarningConfigurationApplicationService;
 
     @GetMapping("/query/{inventoryId}")
-    public Response query(Long inventoryId){
+    public Response query(@PathVariable  Long inventoryId){
         return Response.ok(InventoryWarningConfigurationAssembler.toDTO(inventoryWarningConfigurationApplicationService.query(inventoryId)));
     }
 
 
     @PostMapping("/save")
     public Response create(InventoryWarningConfigurationDTO dto){
-        return Response.ok(InventoryWarningConfigurationAssembler.toDO(dto));
+        return Response.ok(inventoryWarningConfigurationApplicationService.save(InventoryWarningConfigurationAssembler.toDO(dto)));
     }
 
     @PostMapping("/update")
     public Response update(InventoryWarningConfigurationDTO dto){
-        return Response.ok(InventoryWarningConfigurationAssembler.toDO(dto));
+        return Response.ok(inventoryWarningConfigurationApplicationService.update(InventoryWarningConfigurationAssembler.toDO(dto)));
     }
 }
 
