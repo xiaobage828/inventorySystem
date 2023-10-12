@@ -1,7 +1,7 @@
 package cn.xiaobage.domainEvent.interfaces.facade;
 
 
-import cn.xiaobage.common.api.Response;
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.domainEvent.application.service.DomainEventApplicationService;
 import cn.xiaobage.domainEvent.interfaces.assembler.DomainEventAssembler;
 import cn.xiaobage.domainEvent.interfaces.dto.DomainEventDTO;

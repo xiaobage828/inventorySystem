@@ -1,4 +1,4 @@
-package cn.xiaobage.inventory.infrastructure.common.event;
+package cn.xiaobage.common.event;
 
 import lombok.Data;
 
