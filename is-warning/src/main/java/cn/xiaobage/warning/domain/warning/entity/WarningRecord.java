@@ -1,7 +1,10 @@
 package cn.xiaobage.warning.domain.warning.entity;
 
 import cn.hutool.core.util.IdUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 @Data
@@ -21,8 +24,12 @@ public class WarningRecord {
 
     private Integer warningPerson;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date warningTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     public WarningRecord  fromInventoryWaringConfiguration(InventoryWarningConfiguration inventoryWarningConfiguration, Integer totalQuantity){
@@ -38,6 +45,7 @@ public class WarningRecord {
 
     public WarningRecord create(){
         setWarningTime(new Date());
+        this.createTime = warningTime;
         setId(IdUtil.getSnowflakeNextId());
         return this;
     }

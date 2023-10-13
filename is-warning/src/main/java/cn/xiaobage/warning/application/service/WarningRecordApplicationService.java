@@ -30,7 +30,7 @@ public class WarningRecordApplicationService {
         InventoryWarningConfiguration inventoryWarningConfiguration = inventoryWarningConfigurationDomainService.query(inventoryId);
         if(null == inventoryWarningConfiguration)
             return;
-        if(!inventoryWarningConfiguration.lowInventory(currentQuantity) && !inventoryWarningConfiguration.highInventory(currentQuantity))
+        if(inventoryWarningConfiguration.lowInventory(currentQuantity) || inventoryWarningConfiguration.highInventory(currentQuantity))
             return;
         WarningRecord warningRecord = new WarningRecord();
         warningRecord.fromInventoryWaringConfiguration(inventoryWarningConfiguration,currentQuantity);
