@@ -39,7 +39,7 @@
                 <version>2.5.3</version>
                 <configuration>
                     <!-- main方法所在类。 -->
-                    <mainClass>cn.xiaobage.domainEvent.WarehouseApplication</mainClass>
+                    <mainClass>cn.xiaobage.warehouse.WarehouseApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -4,7 +4,7 @@ package cn.xiaobage.warning.domain.warning.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.time.Date;
+import java.util.Date;
 
 
 @Data

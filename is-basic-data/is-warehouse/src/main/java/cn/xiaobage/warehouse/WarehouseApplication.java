@@ -1,4 +1,4 @@
-package cn.xiaobage.domainEvent;
+package cn.xiaobage.warehouse;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
