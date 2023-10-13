@@ -4,7 +4,7 @@ package cn.xiaobage.warning.domain.warning.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.Date;
 
 
 @Data
@@ -44,8 +44,8 @@ public class Inventory {
     private String units;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate createTime;
+    private Date createTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate updateTime;
+    private Date updateTime;
 }

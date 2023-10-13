@@ -1,8 +1,7 @@
 package cn.xiaobage.warning.domain.warning.entity;
 
 import lombok.Data;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class InventoryWarningConfiguration {
@@ -17,9 +16,9 @@ public class InventoryWarningConfiguration {
 
     private Integer warningPerson;
 
-    private LocalDate createTime;
+    private Date createTime;
 
-    private LocalDate updateTime;
+    private Date updateTime;
 
 
     public boolean lowInventory(int currentQuantity){

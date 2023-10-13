@@ -1,9 +1,9 @@
 package cn.xiaobage.warning.interfaces.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class InventoryWarningConfigurationDTO {
@@ -19,10 +19,12 @@ public class InventoryWarningConfigurationDTO {
 
     private Integer warningPerson;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate updateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 
 }

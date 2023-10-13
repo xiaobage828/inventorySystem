@@ -2,8 +2,7 @@ package cn.xiaobage.warning.domain.warning.entity;
 
 import cn.hutool.core.util.IdUtil;
 import lombok.Data;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class WarningRecord {
@@ -22,9 +21,9 @@ public class WarningRecord {
 
     private Integer warningPerson;
 
-    private LocalDate warningTime;
+    private Date warningTime;
 
-    private LocalDate createTime;
+    private Date createTime;
 
     public WarningRecord  fromInventoryWaringConfiguration(InventoryWarningConfiguration inventoryWarningConfiguration, Integer totalQuantity){
         setCurrentInventory(totalQuantity);
@@ -38,7 +37,7 @@ public class WarningRecord {
     }
 
     public WarningRecord create(){
-        setWarningTime(LocalDate.now());
+        setWarningTime(new Date());
         setId(IdUtil.getSnowflakeNextId());
         return this;
     }
