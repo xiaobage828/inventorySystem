@@ -1,5 +1,6 @@
 package cn.xiaobage.inventory.domain.inventory.entity;
 
+import cn.hutool.core.util.IdUtil;
 import lombok.Data;
 import java.util.Date;
 
@@ -29,4 +30,10 @@ public class WarehouseInRecord {
     private Integer maker;
 
     private Date createTime;
+
+    public WarehouseInRecord create(){
+        id = IdUtil.getSnowflakeNextId();
+        this.createTime = new Date();
+        return this;
+    }
 }

@@ -21,7 +21,7 @@ public class InventoryFactory {
         return inventory;
     }
 
-    public InventoryPO getInventoryPO(Inventory inventory){
+    public InventoryPO createInventoryPO(Inventory inventory){
         InventoryPO po = new InventoryPO();
         po.setId(inventory.getId());
         po.setUnits(inventory.getUnits());

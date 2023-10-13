@@ -15,6 +15,7 @@ public class OutboundDeliveryOrderDomainService {
     OutboundDeliveryOrderRepository outboundDeliveryOrderRepositoryImpl;
 
     public int createOutboundDeliveryOrder(OutboundDeliveryOrder outboundDeliveryOrder){
-        return outboundDeliveryOrderRepositoryImpl.insert(outboundDeliveryOrderFactory.getOutboundDeliveryOrderPO(outboundDeliveryOrder));
+        outboundDeliveryOrder.create();
+        return outboundDeliveryOrderRepositoryImpl.insert(outboundDeliveryOrderFactory.createOutboundDeliveryOrderPO(outboundDeliveryOrder));
     }
 }

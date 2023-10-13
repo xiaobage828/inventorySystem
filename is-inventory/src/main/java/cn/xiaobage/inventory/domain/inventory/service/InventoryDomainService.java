@@ -24,7 +24,8 @@ public class InventoryDomainService {
     }
 
     public int createInventory(Inventory inventory){
-        return inventoryRepositoryImpl.insertInventory(inventoryFactory.getInventoryPO(inventory));
+        inventory.create();
+        return inventoryRepositoryImpl.insertInventory(inventoryFactory.createInventoryPO(inventory));
     }
 
     public int inventoryIncrement(Long inventoryId, Integer quantity, Date updateTime){

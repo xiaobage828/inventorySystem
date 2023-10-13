@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WarehouseInRecordFactory {
 
-    public WarehouseInRecordPO getWarehouseInRecordPO(WarehouseInRecord warehouseInRecord){
+    public WarehouseInRecordPO createWarehouseInRecordPO(WarehouseInRecord warehouseInRecord){
         WarehouseInRecordPO warehouseInRecordPO = new WarehouseInRecordPO();
         warehouseInRecordPO.setId(warehouseInRecord.getId());
         warehouseInRecordPO.setCreateTime(warehouseInRecord.getCreateTime());

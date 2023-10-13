@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class OutboundDeliveryOrderFactory {
 
 
-    public OutboundDeliveryOrderPO getOutboundDeliveryOrderPO(OutboundDeliveryOrder outboundDeliveryOrder){
+    public OutboundDeliveryOrderPO createOutboundDeliveryOrderPO(OutboundDeliveryOrder outboundDeliveryOrder){
         OutboundDeliveryOrderPO po = new OutboundDeliveryOrderPO();
         po.setId(outboundDeliveryOrder.getId());
         po.setCreateTime(outboundDeliveryOrder.getCreateTime());

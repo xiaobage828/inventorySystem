@@ -15,6 +15,7 @@ public class WarehouseInRecordDomainService {
     WarehouseInRecordFactory warehouseInRecordFactory;
 
     public int createWarehouseInRecord(WarehouseInRecord warehouseInRecord){
-        return warehouseInRecordRepositoryImpl.insert(warehouseInRecordFactory.getWarehouseInRecordPO(warehouseInRecord));
+        warehouseInRecord.create();
+        return warehouseInRecordRepositoryImpl.insert(warehouseInRecordFactory.createWarehouseInRecordPO(warehouseInRecord));
     }
 }

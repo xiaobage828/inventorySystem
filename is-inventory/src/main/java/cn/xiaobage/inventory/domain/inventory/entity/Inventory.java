@@ -1,9 +1,10 @@
 package cn.xiaobage.inventory.domain.inventory.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import cn.hutool.core.util.IdUtil;
 import lombok.Data;
 import java.util.Date;
+
 
 
 @Data
@@ -42,9 +43,16 @@ public class Inventory {
 
     private String units;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updateTime;
+
+    public Inventory create(){
+        id = IdUtil.getSnowflakeNextId();
+        this.createTime = new Date();
+        this.updateTime = createTime;
+        return this;
+    }
+
+
 }
