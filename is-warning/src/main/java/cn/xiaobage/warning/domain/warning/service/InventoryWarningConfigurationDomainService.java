@@ -18,11 +18,13 @@ public class InventoryWarningConfigurationDomainService {
         return inventoryWarningConfigurationFactory.getDO(inventoryWarningConfigurationRepositoryImpl.query(inventoryId));
     }
 
-    public int save(InventoryWarningConfiguration po){
-        return inventoryWarningConfigurationRepositoryImpl.save(inventoryWarningConfigurationFactory.createInventoryWarningConfigurationPO(po));
+    public int save(InventoryWarningConfiguration inventoryWarningConfiguration){
+        inventoryWarningConfiguration.create();
+        return inventoryWarningConfigurationRepositoryImpl.save(inventoryWarningConfigurationFactory.createInventoryWarningConfigurationPO(inventoryWarningConfiguration));
     }
 
-    public int update(InventoryWarningConfiguration po){
-        return inventoryWarningConfigurationRepositoryImpl.update(inventoryWarningConfigurationFactory.createInventoryWarningConfigurationPO(po));
+    public int update(InventoryWarningConfiguration inventoryWarningConfiguration){
+        inventoryWarningConfiguration.update();
+        return inventoryWarningConfigurationRepositoryImpl.update(inventoryWarningConfigurationFactory.createInventoryWarningConfigurationPO(inventoryWarningConfiguration));
     }
 }

@@ -21,6 +21,17 @@ public class InventoryWarningConfiguration {
     private Date updateTime;
 
 
+    public InventoryWarningConfiguration create(){
+        this.createTime = new Date();
+        this.updateTime = this.createTime;
+        return this;
+    }
+
+    public InventoryWarningConfiguration update(){
+        this.updateTime = new Date();
+        return this;
+    }
+
     public boolean lowInventory(int currentQuantity){
         return null != maximumInventory && currentQuantity < maximumInventory;
     }
