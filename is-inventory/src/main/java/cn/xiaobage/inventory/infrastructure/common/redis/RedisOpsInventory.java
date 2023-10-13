@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
@@ -47,13 +48,13 @@ public class RedisOpsInventory {
 
     public Inventory invokeIncrementLua(WarehouseInRecord warehouseInRecord){
         RedisScript<String> redisScript = new DefaultRedisScript(inventoryIncrementLua,String.class);
-        String inventory =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + warehouseInRecord.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),warehouseInRecord.getQuantity().toString(),warehouseInRecord.getCreateTime().toString());
+        String inventory =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + warehouseInRecord.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),warehouseInRecord.getQuantity().toString(), DateFormatUtils.format(warehouseInRecord.getCreateTime(),"yyyy-MM-dd HH:mm:ss"));
         return JSONObject.parseObject(inventory,Inventory.class);
     }
 
     public Inventory  invokeInventoryDeductionLua(OutboundDeliveryOrder outboundDeliveryOrder){
         RedisScript<String> redisScript = new DefaultRedisScript(inventoryDeductionLua,String.class);
-        String inventory =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + outboundDeliveryOrder.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),outboundDeliveryOrder.getQuantity().toString(),outboundDeliveryOrder.getCreateTime().toString());
+        String inventory =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + outboundDeliveryOrder.getInventoryId(),Inventory.TOTAL_QUANTITY_FIELD_NAME,Inventory.UPDATE_TIME_FIELD_NAME),outboundDeliveryOrder.getQuantity().toString(),DateFormatUtils.format(outboundDeliveryOrder.getCreateTime(),"yyyy-MM-dd HH:mm:ss"));
         return JSONObject.parseObject(inventory,Inventory.class);
     }
 
