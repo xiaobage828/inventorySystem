@@ -11,6 +11,8 @@ CREATE DATABASE inventory_management CHARSET utf8mb4;
 
 USE inventory_management;
 
+DROP TABLE IF EXISTS `inventory`;
+
 CREATE TABLE inventory (
     id BIGINT(64) PRIMARY KEY COMMENT '库存ID',
     warehouse_id BIGINT(64) NOT NULL COMMENT '仓库ID',
@@ -29,6 +31,8 @@ insert  into `inventory`(`id`,`warehouse_id`,`product_id`,`total_quantity`,`lock
 (1710150969165144066,1709906746608316416,1709909767127900166,10000,10,100,'台','2023-10-06 12:37:05','2023-10-06 12:37:08'),
 (1710230850615959552,1709906746608316416,1709909767127900167,10000,10,100,'台','2023-10-06 00:00:00','2023-10-06 00:00:00');
 
+DROP TABLE IF EXISTS `warehouse_in_record`;
+
 CREATE TABLE warehouse_in_record (
     id BIGINT(64) PRIMARY KEY COMMENT '入库单ID',
     record_code VARCHAR(30) NOT NULL COMMENT '单据流水号',
@@ -46,7 +50,7 @@ CREATE TABLE warehouse_in_record (
     KEY `idx_inventory_id` (`inventory_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='入库单';
 
-
+DROP TABLE IF EXISTS `outbound_delivery_order`;
 
 CREATE TABLE outbound_delivery_order (
     id BIGINT(64) PRIMARY KEY COMMENT '存库单ID',
@@ -64,3 +68,22 @@ CREATE TABLE outbound_delivery_order (
     UNIQUE KEY `uq_record_code` (`record_code`),
     KEY `idx_inventory_id` (`inventory_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='出库单';
+
+
+
+DROP TABLE IF EXISTS `undo_log`;
+
+-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
+CREATE TABLE `undo_log` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `branch_id` bigint(20) NOT NULL,
+    `xid` varchar(100) NOT NULL,
+    `context` varchar(128) NOT NULL,
+    `rollback_info` longblob NOT NULL,
+    `log_status` int(11) NOT NULL,
+    `log_created` datetime NOT NULL,
+    `log_modified` datetime NOT NULL,
+    `ext` varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='Seata AT 模式使用到的undo_log表';

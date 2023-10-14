@@ -48,6 +48,27 @@ insert into `organization` (`id`, `name`, `path`, `parent_org_id`) values('3','�
 insert into `organization` (`id`, `name`, `path`, `parent_org_id`) values('40','财务处','1.2.40','2');
 insert into `organization` (`id`, `name`, `path`, `parent_org_id`) values('41','宣传部','1.2.41','2');
 
+
+
+DROP TABLE IF EXISTS `undo_log`;
+
+-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
+CREATE TABLE `undo_log` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+     `branch_id` bigint(20) NOT NULL,
+    `xid` varchar(100) NOT NULL,
+    `context` varchar(128) NOT NULL,
+    `rollback_info` longblob NOT NULL,
+    `log_status` int(11) NOT NULL,
+    `log_created` datetime NOT NULL,
+    `log_modified` datetime NOT NULL,
+    `ext` varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='Seata AT 模式使用到的undo_log表';
+
+
+
 /**
   二、产品领域，暂设计为product_info库，包括三张表
   product
@@ -112,7 +133,7 @@ CREATE TABLE `category` (
     `parent_category_id` bigint(64) COMMENT '父级分类ID',
     PRIMARY KEY (`id`),
     KEY `idx_parent_category_id` (`parent_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='类目表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='类目表';
 
 insert  into `category`(`id`,`category_name`,`parent_category_id`) values
 (1709908788642902016,'生鲜',0),
@@ -121,6 +142,26 @@ insert  into `category`(`id`,`category_name`,`parent_category_id`) values
 (1709909767127900160,'电子设备',0),
 (1709909767127900161,'通讯设备',1709909767127900160),
 (1709909767127900162,'手机',1709909767127900161);
+
+
+
+DROP TABLE IF EXISTS `undo_log`;
+
+-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
+CREATE TABLE `undo_log` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `branch_id` bigint(20) NOT NULL,
+    `xid` varchar(100) NOT NULL,
+    `context` varchar(128) NOT NULL,
+    `rollback_info` longblob NOT NULL,
+    `log_status` int(11) NOT NULL,
+    `log_created` datetime NOT NULL,
+    `log_modified` datetime NOT NULL,
+    `ext` varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='Seata AT 模式使用到的undo_log表';
+
 
 
 /**
@@ -132,6 +173,8 @@ DROP DATABASE  IF EXISTS warehouse;
 CREATE DATABASE warehouse CHARSET utf8mb4;
 
 USE warehouse;
+
+DROP TABLE IF EXISTS warehouse;
 
 CREATE TABLE warehouse (
     id bigint(64) PRIMARY KEY COMMENT '仓库ID',
@@ -145,3 +188,22 @@ CREATE TABLE warehouse (
 insert into `warehouse` (`id`, `name`, `address`, `person_in_charge`, `parent_warehouse_id`) values('1709906292365123584','深圳总仓','深圳南山区前海','1',NULL);
 insert into `warehouse` (`id`, `name`, `address`, `person_in_charge`, `parent_warehouse_id`) values('1709906746608316416','南山分仓','深圳南山区前海','1','1709906292365123584');
 insert into `warehouse` (`id`, `name`, `address`, `person_in_charge`, `parent_warehouse_id`) values('1709907118101962752','宝安分仓','深圳南山区西厢街道','1','1709907118101962752');
+
+
+
+DROP TABLE IF EXISTS `undo_log`;
+
+-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
+CREATE TABLE `undo_log` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `branch_id` bigint(20) NOT NULL,
+    `xid` varchar(100) NOT NULL,
+    `context` varchar(128) NOT NULL,
+    `rollback_info` longblob NOT NULL,
+    `log_status` int(11) NOT NULL,
+    `log_created` datetime NOT NULL,
+    `log_modified` datetime NOT NULL,
+    `ext` varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='Seata AT 模式使用到的undo_log表';
