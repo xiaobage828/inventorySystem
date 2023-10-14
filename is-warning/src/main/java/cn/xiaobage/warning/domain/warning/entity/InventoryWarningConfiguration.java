@@ -40,7 +40,7 @@ public class InventoryWarningConfiguration {
     }
 
     public boolean lowInventory(int currentQuantity){
-        return null != maximumInventory && currentQuantity < maximumInventory;
+        return null != minimumInventory && currentQuantity < minimumInventory;
     }
 
     public boolean highInventory(int currentQuantity){
