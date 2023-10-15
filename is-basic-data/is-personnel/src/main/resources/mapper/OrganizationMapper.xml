@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaobage.personnel.domain.organization.repository.mapper.OrganizationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.xiaobage.personnel.domain.organization.repository.po.OrganizationPO">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="path" property="path" />
+        <result column="parent_org_id" property="parentOrgId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, path, parent_org_id
+    </sql>
+
+</mapper>
