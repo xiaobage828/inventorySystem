@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: is-gateway
-
 #默认使用7210端口
 server:
   port: 7210

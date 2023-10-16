@@ -19,11 +19,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import javax.annotation.PostConstruct;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -51,22 +48,12 @@ public class JwtTokenGlobalFilter implements GlobalFilter {
     /**
      * 忽略认证url
      */
-    private Set<String> ignoreUrlSet = new HashSet();
+    private Set<String> ignoreUrlSet;
 
     /**
      * 认证标识
      */
-    private String authorization = "Authorization";
-
-    @PostConstruct
-    public void init(){
-        populateSet();
-    }
-
-    private void populateSet(){
-        ignoreUrlSet.add("user/login");
-        ignoreUrlSet.add("user/register");
-    }
+    private String authorization;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -76,7 +63,7 @@ public class JwtTokenGlobalFilter implements GlobalFilter {
 
         // 忽略认证
         for (String ignoreUrl : ignoreUrlSet) {
-            if (Boolean.TRUE.equals(ignore(url, ignoreUrl))) {
+            if (ignore(url, ignoreUrl)) {
                 return chain.filter(exchange);
             }
         }

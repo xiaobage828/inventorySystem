@@ -8,8 +8,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
+@RestController
 @EnableFeignClients(basePackages = "cn.xiaobage.inventory.infrastructure.client")
 @EnableTransactionManagement
 @ComponentScan("cn.xiaobage")
@@ -20,6 +23,11 @@ public class InventoryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(InventoryApplication.class, args);
+    }
+
+    @GetMapping("/health")
+    public String health(){
+        return "is-inventory";
     }
 
 }
