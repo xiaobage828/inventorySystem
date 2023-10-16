@@ -15,18 +15,48 @@ spring:
             redis-rate-limiter.replenishRate: 10 #字段为令牌桶恢复速度，即每秒访问个数
             redis-rate-limiter.burstCapacity: 40 #字段为令牌桶大小，即峰值流量来临时最大可访问数
       routes:
-        - id: is-inventorySystem
-          uri: http://127.0.0.1:7214/
+        - id: is-personnel
+          uri: lb://is-personnel
           predicates:
-            - Path=/is-inventorySystem/**
-          filters:
-            # 1表示过滤一个路径
-            - StripPrefix=1
-#            - name: IpRequestRateLimiter #请求数限流 名字不能随便写
-#              args:
-#                key-resolver: "#{@ipKeyResolver}"
-#                redis-rate-limiter.replenishRate: 1 #字段为令牌桶恢复速度，即每秒访问个数
-#                redis-rate-limiter.burstCapacity: 1 #字段为令牌桶大小，即峰值流量来临时最大可访问数
+            - Path=/is-personnel/**
+#          filters:
+#            # 1表示过滤一个路径
+#            - StripPrefix=1
+        - id: is-product
+          uri: lb://is-product
+          predicates:
+            - Path=/is-product/**
+#          filters:
+#            # 1表示过滤一个路径
+#            - StripPrefix=1
+        - id: is-warehouse
+          uri: lb://is-warehouse
+          predicates:
+            - Path=/is-warehouse/**
+#          filters:
+#            # 1表示过滤一个路径
+#            - StripPrefix=1
+        - id: is-domain-event
+          uri: lb://is-domain-event
+          predicates:
+            - Path=/is-domain-event/**
+#          filters:
+#            # 1表示过滤一个路径
+#            - StripPrefix=1
+        - id: is-inventory
+          uri: lb://is-inventory
+          predicates:
+            - Path=/is-inventory/**
+#          filters:
+#            # 1表示过滤一个路径
+#            - StripPrefix=1
+        - id: is-warning
+          uri: lb://is-warning
+          predicates:
+            - Path=/is-warning/**
+#          filters:
+#            # 1表示过滤一个路径
+#            - StripPrefix=1
 
 
 

@@ -3,6 +3,7 @@ is:
   mq-port1: 9876
   host: localhost
   redis-port: 6379
+  nacos-port: 8848
 #  mq-host2: localhost
 #  mq-port2: 10915
 #nacos
@@ -10,5 +11,6 @@ nacos:
   #dev
   namespace: 79622650-2ad0-4651-945e-82929157836f
 
+REDIS_PASSWORD: redis6379
 MQ_NAME_SERVER: ${is.mq-host1}:${is.mq-port1}
 MQ_GROUP: inventory_management

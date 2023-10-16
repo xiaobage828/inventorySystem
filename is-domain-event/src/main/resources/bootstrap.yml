@@ -15,6 +15,10 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yaml
+    sentinel:
+      transport:
+        port: 8718
+        dashboard: localhost:8718
 
 management:
   endpoint:
