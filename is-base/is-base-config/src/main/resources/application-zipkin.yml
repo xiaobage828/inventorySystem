@@ -1,0 +1,7 @@
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:9411/ # 连接 zipkin 服务端的地址，接口被调用后，调用相关信息通过这个 url 发送到 zipkin 服务端
+    discovery-client-enabled: false
+  sleuth:
+    sampler:
+      probability: 1.0

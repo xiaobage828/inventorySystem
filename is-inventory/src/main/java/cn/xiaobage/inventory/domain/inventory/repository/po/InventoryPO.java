@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -58,10 +60,12 @@ public class InventoryPO implements Serializable {
 
     @ApiModelProperty("创建时间")
     @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     @ApiModelProperty("修改时间")
     @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
 

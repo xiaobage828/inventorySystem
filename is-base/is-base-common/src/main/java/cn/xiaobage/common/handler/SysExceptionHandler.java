@@ -1,9 +1,9 @@
 package cn.xiaobage.common.handler;
 
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.config.exception.IsCodeException;
 import cn.xiaobage.config.exception.IsException;
 import cn.xiaobage.config.exception.TokenAuthException;
-import cn.xiaobage.config.vo.FailInfo;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -31,10 +31,10 @@ public class SysExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = Exception.class)
-    public FailInfo exception(Exception ex) {
+    public Response exception(Exception ex) {
         log.error("Exception_info:{}", ex.getMessage());
         log.error("Exception_info:", ex);
-        FailInfo failInfo = FailInfo.builder().exception(ex.getMessage()).build();
+        Response failInfo = Response.failed(ex.getMessage());
         return failInfo;
     }
 
@@ -45,48 +45,48 @@ public class SysExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = BindException.class)
-    public FailInfo exception(BindException ex) {
+    public Response exception(BindException ex) {
         String defaultMessage = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
         log.error("Exception_info:{}", defaultMessage);
         log.error("Exception_info:", ex);
-        FailInfo failInfo = FailInfo.builder().exception(defaultMessage).build();
+        Response failInfo = Response.failed(defaultMessage);
         return failInfo;
     }
 
     @ExceptionHandler(value = IsCodeException.class)
-    public FailInfo ldCodeException(IsCodeException ex) {
+    public Response ldCodeException(IsCodeException ex) {
         log.error("Exception_info:{}", ex.getMessage());
         log.error("Exception_info:", ex);
-        FailInfo failInfo = new FailInfo(ex.getCode(), ex.getMessage());
+        Response failInfo = Response.failed(ex.getMessage());
         return failInfo;
     }
 
     @ExceptionHandler(value = IsException.class)
-    public FailInfo sysException(Exception ex) {
+    public Response sysException(Exception ex) {
         log.error("Exception_info:{}", ex.getMessage());
         log.error("Exception_info:", ex);
-        FailInfo failInfo = FailInfo.builder().exception(ex.getMessage()).build();
+        Response failInfo = Response.failed(ex.getMessage());
         return failInfo;
     }
 
     @ExceptionHandler(value = TokenAuthException.class)
-    public FailInfo tokenAuthException(Exception ex) {
+    public Response tokenAuthException(Exception ex) {
         log.error("Exception_info:{}", ex.getMessage());
         log.error("Exception_info:", ex);
-        FailInfo failInfo = FailInfo.builder().exception(ex.getMessage()).build();
+        Response failInfo = Response.failed(ex.getMessage());
         return failInfo;
     }
 
 
     @ExceptionHandler(value = MysqlDataTruncation.class)
-    public FailInfo mysqlDataTruncation(Exception ex) {
+    public Response mysqlDataTruncation(Exception ex) {
         log.error("Exception_info:{}", ex.getMessage());
         log.error("Exception_info:", ex);
-        return new FailInfo(500, ex.getMessage());
+        return Response.failed(ex.getMessage());
     }
 
     @ExceptionHandler(value = DataIntegrityViolationException.class)
-    public FailInfo dataIntegrityViolationException(Exception ex) {
+    public Response dataIntegrityViolationException(Exception ex) {
         log.error("Exception_info:{}", ex.getMessage());
         log.error("Exception_info:", ex);
         String message = ex.getMessage();
@@ -100,6 +100,6 @@ public class SysExceptionHandler {
                 message = split1[split1.length - 1].trim();
             }
         }
-        return new FailInfo(500, message);
+        return Response.failed(message);
     }
 }

@@ -1,8 +1,8 @@
 package cn.xiaobage.gateway.filter;
 
+import cn.xiaobage.config.api.Response;
 import cn.xiaobage.config.exception.IsException;
 import cn.xiaobage.config.util.JwtUtil;
-import cn.xiaobage.config.vo.FailInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
@@ -94,7 +94,7 @@ public class JwtTokenGlobalFilter implements GlobalFilter {
 
         String returnStr = "";
         try {
-            returnStr = objectMapper.writeValueAsString(new FailInfo(msg));
+            returnStr = objectMapper.writeValueAsString(Response.failed(msg));
         } catch (JsonProcessingException e) {
             log.error(e.getMessage(), e);
         }

@@ -1,7 +1,7 @@
 package cn.xiaobage.common.handler;
 
 import cn.xiaobage.common.annotation.ResponseResult;
-import cn.xiaobage.config.vo.SuccessInfo;
+import cn.xiaobage.config.api.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -57,9 +57,7 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
                                   ServerHttpRequest request,
                                   ServerHttpResponse serverHttpResponse) {
         // 处理结果集
-        SuccessInfo successInfo = SuccessInfo.builder()
-                .data(data)
-                .build();
+        Response successInfo = Response.ok(data);
 
         if ((data instanceof String) && !MediaType.APPLICATION_XML_VALUE.equals(mediaType.toString())) {
             ObjectMapper om = new ObjectMapper();

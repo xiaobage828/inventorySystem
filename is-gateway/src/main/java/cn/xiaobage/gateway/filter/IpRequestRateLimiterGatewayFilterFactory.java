@@ -1,6 +1,6 @@
 package cn.xiaobage.gateway.filter;
 
-import cn.xiaobage.config.vo.FailInfo;
+import cn.xiaobage.config.api.Response;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -64,7 +64,7 @@ public class IpRequestRateLimiterGatewayFilterFactory extends RequestRateLimiter
                     httpResponse.getHeaders().add("Content-Type", "application/json");
                 }
                 //此处无法触发全局异常处理，手动返回
-                FailInfo failInfo = FailInfo.builder().exception("服务繁忙，稍后重试！").build();
+                Response failInfo = Response.failed("服务繁忙，稍后重试！");
                 DataBuffer buffer = httpResponse.bufferFactory().wrap(JSON.toJSONString(failInfo).getBytes(StandardCharsets.UTF_8));
                 return httpResponse.writeWith(Mono.just(buffer));
             });

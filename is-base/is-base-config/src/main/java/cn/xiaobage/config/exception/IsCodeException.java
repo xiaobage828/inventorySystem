@@ -1,9 +1,9 @@
 package cn.xiaobage.config.exception;
 
 
-import cn.xiaobage.config.vo.FailInfo;
-
 public class IsCodeException extends RuntimeException {
+
+    public static final Integer DEFAULT_CODE = 50000;
 
     private Integer code;
 
@@ -21,17 +21,17 @@ public class IsCodeException extends RuntimeException {
 
     public IsCodeException(String message, Object... args) {
         super(String.format(message, args));
-        this.code = FailInfo.DEFAULT_CODE;
+        this.code = DEFAULT_CODE;
     }
 
     public IsCodeException(String message, Throwable cause, Object... args) {
         super(String.format(message, args), cause);
-        this.code = FailInfo.DEFAULT_CODE;
+        this.code = DEFAULT_CODE;
     }
 
     public IsCodeException(Throwable cause) {
         super(cause);
-        this.code = FailInfo.DEFAULT_CODE;
+        this.code = DEFAULT_CODE;
     }
 
 }
