@@ -1,5 +1,7 @@
 package cn.xiaobage.inventory.interfaces.facade;
 
+import cn.xiaobage.common.annotation.RedissonDistributedLock;
+import cn.xiaobage.config.redisson.rLock.RLockType;
 import cn.xiaobage.inventory.application.service.InventoryApplicationService;
 import cn.xiaobage.inventory.domain.inventory.entity.WarehouseInRecord;
 import cn.xiaobage.inventory.domain.inventory.event.WarehouseInRecordCreateEvent;
@@ -18,6 +20,7 @@ public class WarehouseInRecordCreateMQListener implements RocketMQListener<Wareh
     @Autowired
     InventoryApplicationService inventoryApplicationService;
 
+    @RedissonDistributedLock(redissonClient = "redisson",rlockType = RLockType.REDISSON_WRITE_LOCK,keyPrefix = "lock:domain_event:warehouse_in_record_create:",key="#message.id")
     @Override
     public void onMessage(WarehouseInRecordCreateEvent message) {
         log.info("接收到MQ消息 {}", message);

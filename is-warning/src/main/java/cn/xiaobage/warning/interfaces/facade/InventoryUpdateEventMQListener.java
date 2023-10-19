@@ -1,5 +1,7 @@
 package cn.xiaobage.warning.interfaces.facade;
 
+import cn.xiaobage.common.annotation.RedissonDistributedLock;
+import cn.xiaobage.config.redisson.rLock.RLockType;
 import cn.xiaobage.warning.application.service.WarningRecordApplicationService;
 import cn.xiaobage.warning.domain.warning.entity.Inventory;
 import cn.xiaobage.warning.domain.warning.event.InventoryUpdateEvent;
@@ -18,6 +20,7 @@ public class InventoryUpdateEventMQListener implements RocketMQListener<Inventor
     @Autowired
     WarningRecordApplicationService warningRecordApplicationService;
 
+    @RedissonDistributedLock(redissonClient = "redisson",rlockType = RLockType.REDISSON_WRITE_LOCK,keyPrefix = "lock:domain_event:inventory_update:",key="#message.id")
     @Override
     public void onMessage(InventoryUpdateEvent message) {
         log.info("接收到MQ消息 {}", message);
