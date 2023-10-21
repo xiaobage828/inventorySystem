@@ -7,11 +7,7 @@ import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.interfaces.assembler.InventoryAssembler;
 import cn.xiaobage.inventory.interfaces.dto.InventoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +34,13 @@ public class InventoryApi {
         List<Inventory> inventoryList = inventoryApplicationService.queryInventory(inventoryId,warehouseId,productId);
         List<InventoryDTO> inventoryDTOList = inventoryList.stream().map(inventory -> InventoryAssembler.toDTO(inventory)).collect(Collectors.toList());
         return Response.ok(inventoryDTOList);
+    }
+
+    @GetMapping("/query/{inventoryId}")
+    public Response queryInventory(@PathVariable Long inventoryId){
+        Inventory inventory = inventoryApplicationService.queryInventoryByIdFromCacheAndDB(inventoryId);
+        InventoryDTO inventoryDTO = null == inventory ? null : InventoryAssembler.toDTO(inventory);
+        return Response.ok(inventoryDTO);
     }
 
     @PostMapping("/createInventory")

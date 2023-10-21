@@ -18,6 +18,8 @@ public interface InventoryRepository  {
 
     List<InventoryPO> queryInventory(Long inventoryId, Long warehouseId, Long productId);
 
+    InventoryPO queryInventoryById(Long inventoryId);
+
     int insertInventory(InventoryPO inventoryPO);
 
     int inventoryIncrement(Long inventoryId, Integer quantity, Date updateTime);

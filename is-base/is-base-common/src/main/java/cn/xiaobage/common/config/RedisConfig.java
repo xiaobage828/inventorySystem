@@ -97,7 +97,8 @@ public class RedisConfig extends CachingConfigurerSupport {
                 // 使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer()))
                 // 禁用空值
-                .disableCachingNullValues();
+                .disableCachingNullValues()
+                ;
 
         return RedisCacheManager.builder(factory)
                 .cacheDefaults(config)

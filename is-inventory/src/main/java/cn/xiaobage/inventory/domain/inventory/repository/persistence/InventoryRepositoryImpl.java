@@ -36,6 +36,11 @@ public class InventoryRepositoryImpl implements InventoryRepository {
     }
 
     @Override
+    public InventoryPO queryInventoryById(Long inventoryId) {
+        return inventoryMapper.selectById(inventoryId);
+    }
+
+    @Override
     public int insertInventory(InventoryPO inventoryPO) {
         return inventoryMapper.insert(inventoryPO);
     }

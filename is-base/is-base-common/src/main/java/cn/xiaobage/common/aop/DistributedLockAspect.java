@@ -70,7 +70,8 @@ public class DistributedLockAspect {
         }catch (Throwable throwable){
             throw throwable;
         } finally {
-            rLock.unlock();
+            if(null != rLock && rLock.isHeldByCurrentThread())
+                rLock.unlock();
         }
 
         return result;

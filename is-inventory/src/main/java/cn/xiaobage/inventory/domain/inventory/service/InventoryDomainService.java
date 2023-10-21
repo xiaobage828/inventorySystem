@@ -23,6 +23,11 @@ public class InventoryDomainService {
         return inventoryPOList.stream().map(inventoryPO -> inventoryFactory.getInventory(inventoryPO)).collect(Collectors.toList());
     }
 
+    public Inventory queryInventoryById(Long inventoryId){
+        InventoryPO inventoryPO = inventoryRepositoryImpl.queryInventoryById(inventoryId);
+        return null == inventoryPO ? null : inventoryFactory.getInventory(inventoryPO);
+    }
+
     public int createInventory(Inventory inventory){
         inventory.create();
         return inventoryRepositoryImpl.insertInventory(inventoryFactory.createInventoryPO(inventory));

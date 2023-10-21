@@ -1,6 +1,7 @@
 package cn.xiaobage.inventory.infrastructure.common.redis;
 
 import cn.xiaobage.config.util.FileLoad;
+import cn.xiaobage.config.util.RedisUtil;
 import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.domain.inventory.entity.OutboundDeliveryOrder;
 import cn.xiaobage.inventory.domain.inventory.entity.WarehouseInRecord;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Component
@@ -28,21 +31,46 @@ public class RedisOpsInventory {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    private static String inventoryQueryLua;
 
     private static String inventoryDeductionLua;
 
     private static String inventoryIncrementLua;
 
     static {
+        inventoryQueryLua = FileLoad.read("lua/inventory_query.lua");
         inventoryDeductionLua = FileLoad.read("lua/inventory_deduction.lua");
         inventoryIncrementLua = FileLoad.read("lua/inventory_increment.lua");
     }
 
     public Inventory  saveInventory(Inventory inventory){
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         objectMapper.registerModules(new JavaTimeModule(), new Jdk8Module());
         Map<String,String> map = objectMapper.convertValue(inventory,new TypeReference<Map<String,String>>(){});
         stringRedisTemplate.opsForHash().putAll(RedisKeyPrefixConst.InventoryCache+inventory.getId(), map);
+        return inventory;
+    }
+
+    public Inventory  saveEmptyInventory(Long inventoryId, Inventory inventory){
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        objectMapper.registerModules(new JavaTimeModule(), new Jdk8Module());
+        Map<String,String> map = objectMapper.convertValue(inventory,new TypeReference<Map<String,String>>(){});
+        stringRedisTemplate.opsForHash().putAll(RedisKeyPrefixConst.InventoryCache + inventoryId, map);
+        return new Inventory();
+    }
+
+    public Inventory queryInventoryByIdFromCache(Long inventoryId){
+        if(! stringRedisTemplate.hasKey(RedisKeyPrefixConst.InventoryCache + inventoryId ))
+            return null;
+        RedisScript<String> redisScript = new DefaultRedisScript(inventoryQueryLua,String.class);
+        String inventoryJSONString =  stringRedisTemplate.execute(redisScript, Arrays.asList(RedisKeyPrefixConst.InventoryCache + inventoryId));
+        Inventory inventory =  JSONObject.parseObject(inventoryJSONString,Inventory.class);
+        if(Inventory.NULL_INVENTORY.equals(inventory)){
+            stringRedisTemplate.expire(RedisKeyPrefixConst.InventoryCache + inventoryId , RedisUtil.getEmptyTimeOut(), TimeUnit.SECONDS);
+            return new Inventory();
+        }
         return inventory;
     }
 
