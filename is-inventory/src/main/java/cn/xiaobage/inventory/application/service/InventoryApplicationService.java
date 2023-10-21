@@ -85,7 +85,7 @@ public class InventoryApplicationService {
         return inventory;
     }
 
-    @RedissonDistributedLock(redissonClient = "redisson",rlockType = RLockType.REDISSON_READ_LOCK,keyPrefix = RedisKeyPrefixConst.InventoryCache,keyType = KeyType.EXPRESSION,key = "#inventoryId")
+    @RedissonDistributedLock(redissonClient = "redisson",rlockType = RLockType.REDISSON_READ_LOCK,keyPrefix = RedisKeyPrefixConst.InventoryLock ,keyType = KeyType.EXPRESSION,key = "#inventoryId")
 
     public Inventory findInventoryFromDBAndSetCacheById(Long inventoryId){
 

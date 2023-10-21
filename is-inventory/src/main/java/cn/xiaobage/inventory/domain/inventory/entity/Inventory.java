@@ -44,8 +44,8 @@ public class Inventory {
         NULL_INVENTORY.setTotalQuantity(-1);
         NULL_INVENTORY.setDamagedQuantity(-1);
         NULL_INVENTORY.setLockQuantity(-1);
-        NULL_INVENTORY.setCreateTime(DateUtil.parse("1987-01-01 00:00:00"));
-        NULL_INVENTORY.setUpdateTime(DateUtil.parse("1987-01-01 00:00:00"));
+        NULL_INVENTORY.setCreateTime(DateUtil.parse("1970-01-01 00:00:01"));
+        NULL_INVENTORY.setUpdateTime(DateUtil.parse("1970-01-01 00:00:01"));
     }
 
 
