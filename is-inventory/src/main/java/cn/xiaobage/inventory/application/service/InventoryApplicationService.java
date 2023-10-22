@@ -71,7 +71,7 @@ public class InventoryApplicationService {
         return inventory;
     }
 
-    @RedissonDistributedLock(redissonClient = "redisson",rlockType = RLockType.REDISSON_LOCK,keyPrefix = "lock:hot_key_create:",keyType = KeyType.EXPRESSION,key = "#inventoryId")
+    @RedissonDistributedLock(redissonClient = "redisson",rlockType = RLockType.REDISSON_LOCK,keyPrefix = RedisKeyPrefixConst.InventoryHotKeyCreateLock,keyType = KeyType.EXPRESSION,key = "#inventoryId")
     public Inventory queryInventoryAndSetCacheById(Long inventoryId){
 
         Inventory inventory = redisOpsInventory.queryInventoryByIdFromCache(inventoryId);

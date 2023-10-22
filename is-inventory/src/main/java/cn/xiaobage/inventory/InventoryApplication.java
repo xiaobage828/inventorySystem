@@ -1,5 +1,6 @@
 package cn.xiaobage.inventory;
 
+import cn.xiaobage.config.api.Response;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,8 +29,8 @@ public class InventoryApplication {
     }
 
     @GetMapping("/health")
-    public String health(){
-        return "is-inventory";
+    public Response health(){
+        return Response.ok("is-inventory");
     }
 
 }

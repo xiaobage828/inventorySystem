@@ -1,5 +1,6 @@
 package cn.xiaobage.warning;
 
+import cn.xiaobage.config.api.Response;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,8 +28,8 @@ public class WarningApplication {
     }
 
     @GetMapping("/health")
-    public String health(){
-        return "is-warning";
+    public Response health(){
+        return Response.ok("is-warning");
     }
 
 }
