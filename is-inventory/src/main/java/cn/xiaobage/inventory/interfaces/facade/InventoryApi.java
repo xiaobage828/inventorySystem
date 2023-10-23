@@ -6,6 +6,7 @@ import cn.xiaobage.inventory.application.service.InventoryApplicationService;
 import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.interfaces.assembler.InventoryAssembler;
 import cn.xiaobage.inventory.interfaces.dto.InventoryDTO;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class InventoryApi {
     InventoryApplicationService inventoryApplicationService;
 
 
-
+    @SentinelResource("queryInventory")
     @GetMapping("/queryInventory")
     public Response queryInventory(Long inventoryId,Long warehouseId,Long productId){
         List<Inventory> inventoryList = inventoryApplicationService.queryInventory(inventoryId,warehouseId,productId);
@@ -36,6 +37,7 @@ public class InventoryApi {
         return Response.ok(inventoryDTOList);
     }
 
+    @SentinelResource("queryInventoryFromCache")
     @GetMapping("/query/{inventoryId}")
     public Response queryInventory(@PathVariable Long inventoryId){
         Inventory inventory = inventoryApplicationService.queryInventoryByIdFromCacheAndDB(inventoryId);

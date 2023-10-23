@@ -5,6 +5,7 @@ import cn.xiaobage.config.api.Response;
 import cn.xiaobage.inventory.application.service.OutboundDeliveryOrderApplicationService;
 import cn.xiaobage.inventory.interfaces.assembler.OutboundDeliveryOrderAssembler;
 import cn.xiaobage.inventory.interfaces.dto.OutboundDeliveryOrderDTO;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class OutboundDeliveryOrderApi {
     @Autowired
     OutboundDeliveryOrderApplicationService outboundDeliveryOrderApplicationService;
 
+    @SentinelResource(value = "createOutboundDeliveryOrder")
     @PostMapping("/create")
     public Response createOutboundDeliveryOrder(OutboundDeliveryOrderDTO outboundDeliveryOrderDTO){
         return Response.ok(outboundDeliveryOrderApplicationService.createOutboundDeliveryOrder(OutboundDeliveryOrderAssembler.toDo(outboundDeliveryOrderDTO)));

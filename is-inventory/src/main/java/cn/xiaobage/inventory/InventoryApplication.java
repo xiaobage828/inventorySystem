@@ -1,6 +1,7 @@
 package cn.xiaobage.inventory;
 
 import cn.xiaobage.config.api.Response;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,6 +29,7 @@ public class InventoryApplication {
         SpringApplication.run(InventoryApplication.class, args);
     }
 
+    @SentinelResource("healthCheck")
     @GetMapping("/health")
     public Response health(){
         return Response.ok("is-inventory");

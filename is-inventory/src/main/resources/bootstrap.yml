@@ -19,7 +19,58 @@ spring:
       transport:
         port: 8718
         dashboard: localhost:8718
-        
+      datasource:
+        flow:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-flow-rules
+            group-id: SENTINEL_GROUP
+            data-type: json
+            rule-type: flow
+            namespace: 79622650-2ad0-4651-945e-82929157836f
+            username: nacos
+            password: nacos
+        degrade:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-degrade-rules
+            group-id: SENTINEL_GROUP
+            data-type: json
+            rule-type: flow
+            namespace: 79622650-2ad0-4651-945e-82929157836f
+            username: nacos
+            password: nacos
+        param-flow:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-param-flow-rules
+            group-id: SENTINEL_GROUP
+            data-type: json
+            rule-type: param-flow
+            namespace: 79622650-2ad0-4651-945e-82929157836f
+            username: nacos
+            password: nacos
+        system:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-system-rules
+            group-id: SENTINEL_GROUP
+            data-type: json
+            rule-type: system
+            namespace: 79622650-2ad0-4651-945e-82929157836f
+            username: nacos
+            password: nacos
+        authority:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-authority-rules
+            group-id: SENTINEL_GROUP
+            data-type: json
+            rule-type: authority
+            namespace: 79622650-2ad0-4651-945e-82929157836f
+            username: nacos
+            password: nacos
+
 management:
   endpoint:
     shutdown:

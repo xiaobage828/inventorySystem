@@ -5,6 +5,7 @@ import cn.xiaobage.config.api.Response;
 import cn.xiaobage.inventory.application.service.WarehouseInRecordApplicationService;
 import cn.xiaobage.inventory.interfaces.assembler.WarehouseInRecordAssembler;
 import cn.xiaobage.inventory.interfaces.dto.WarehouseInRecordDTO;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class WarehouseInRecordApi {
     @Autowired
     WarehouseInRecordApplicationService WarehouseInRecordApplicationService;
 
+    @SentinelResource(value = "createWarehouseInRecord")
     @PostMapping("/createWarehouseInRecord")
     public Response createWarehouseInRecord(WarehouseInRecordDTO warehouseInRecordDTO){
         int updateRecord = WarehouseInRecordApplicationService.createWarehouseInRecord(WarehouseInRecordAssembler.toDO(warehouseInRecordDTO));
