@@ -23,4 +23,9 @@ public class WarningRecordDomainService {
         return warningRecordRepository.save(po);
     }
 
+    public WarningRecord query(Long warningRecordId){
+        WarningRecordPO warningRecordPO = warningRecordRepository.query(warningRecordId);
+        return warningRecordFactory.getWarningRecord(warningRecordPO);
+    }
+
 }

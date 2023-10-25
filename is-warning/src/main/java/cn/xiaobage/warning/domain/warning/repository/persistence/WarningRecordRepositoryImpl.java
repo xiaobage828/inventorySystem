@@ -25,4 +25,9 @@ public class WarningRecordRepositoryImpl implements WarningRecordRepository {
     public int save(WarningRecordPO warningRecordPO) {
         return warningRecordMapper.insert(warningRecordPO);
     }
+
+    @Override
+    public WarningRecordPO query(Long warningRecordId) {
+        return warningRecordMapper.selectById(warningRecordId);
+    }
 }

@@ -39,4 +39,8 @@ public class WarningRecordApplicationService {
         domainEventFeignClient.save(DomainEventAssembler.toDTO(warningRecordCreateEvent));
         applicationContext.publishEvent(warningRecordCreateEvent);
     }
+
+    public WarningRecord query(Long waringRecordId){
+        return warningRecordDomainService.query(waringRecordId);
+    }
 }

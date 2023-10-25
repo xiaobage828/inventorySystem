@@ -14,4 +14,6 @@ import cn.xiaobage.warning.domain.warning.repository.po.WarningRecordPO;
 public interface WarningRecordRepository {
 
     int save(WarningRecordPO warningRecordPO);
+
+    WarningRecordPO query(Long warningRecordId);
 }

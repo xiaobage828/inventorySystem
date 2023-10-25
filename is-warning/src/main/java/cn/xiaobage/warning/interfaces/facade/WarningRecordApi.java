@@ -3,6 +3,9 @@ package cn.xiaobage.warning.interfaces.facade;
 
 import cn.xiaobage.config.api.Response;
 import cn.xiaobage.warning.application.service.WarningRecordApplicationService;
+import cn.xiaobage.warning.domain.warning.entity.WarningRecord;
+import cn.xiaobage.warning.interfaces.assembler.WariningRecordAssembler;
+import cn.xiaobage.warning.interfaces.dto.WarningRecordDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,7 +35,9 @@ public class WarningRecordApi {
     @ApiOperation(value= "query")
     @GetMapping("/query/{warningRecordId}")
     public Response query(@ApiParam(value = "预警记录id",name = "waringRecordId") Long waringRecordId){
-        return Response.ok();
+        WarningRecord warningRecord = warningRecordApplicationService.query(waringRecordId);
+        WarningRecordDTO warningRecordDTO = WariningRecordAssembler.toDTO(warningRecord);
+        return Response.ok(warningRecordDTO);
     }
 
 
