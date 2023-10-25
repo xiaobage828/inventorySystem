@@ -7,6 +7,9 @@ import cn.xiaobage.inventory.domain.inventory.entity.Inventory;
 import cn.xiaobage.inventory.interfaces.assembler.InventoryAssembler;
 import cn.xiaobage.inventory.interfaces.dto.InventoryDTO;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,7 @@ import java.util.stream.Collectors;
  * @since 2023年10月05日
  */
 @RestController
+@Api(value = "InventoryApi", tags = { "库存访问接口" })
 @RequestMapping("/inventory")
 public class InventoryApi {
 
@@ -37,16 +41,18 @@ public class InventoryApi {
         return Response.ok(inventoryDTOList);
     }
 
+    @ApiOperation(value = "query")
     @SentinelResource("queryInventoryFromCache")
     @GetMapping("/query/{inventoryId}")
-    public Response queryInventory(@PathVariable Long inventoryId){
+    public Response queryInventory(@ApiParam(value = "入库单id",name = "inventoryId") @PathVariable Long inventoryId){
         Inventory inventory = inventoryApplicationService.queryInventoryByIdFromCacheAndDB(inventoryId);
         InventoryDTO inventoryDTO = null == inventory ? null : InventoryAssembler.toDTO(inventory);
         return Response.ok(inventoryDTO);
     }
 
+    @ApiOperation(value = "create")
     @PostMapping("/createInventory")
-    public Response createInventory(InventoryDTO inventoryDTO){
+    public Response createInventory(@ApiParam(value = "库存DTO",name ="inventoryDTO") InventoryDTO inventoryDTO){
         int updateRecord = inventoryApplicationService.createInventory(InventoryAssembler.toDO(inventoryDTO));
         return Response.ok(updateRecord);
     }
