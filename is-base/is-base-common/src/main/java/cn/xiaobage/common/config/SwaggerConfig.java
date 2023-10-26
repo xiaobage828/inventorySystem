@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket productApi(Environment environment) {
+    public Docket docket(Environment environment) {
         // 设置要显示swagger的环境
         Profiles of = Profiles.of("dev", "test");
         // 判断当前是否处于该环境

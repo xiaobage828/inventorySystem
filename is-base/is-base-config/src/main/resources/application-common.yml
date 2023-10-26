@@ -1,0 +1,41 @@
+#spring cloud
+spring:
+  cloud:
+    nacos:
+      server-addr: ${is.host}:${is.nacos-port}
+      discovery:
+        username: ${nacos.username}
+        password: ${nacos.password}
+        namespace: ${nacos.namespace}
+    config:
+      server-addr: ${is.host}:${is.nacos-port}
+      file-extension: yaml
+  redis:
+    host: ${is.host}
+    port: ${is.redis-port}
+    password: ${REDIS_PASSWORD}
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: ${ZIPKIN_HOST} # 连接 zipkin 服务端的地址，接口被调用后，调用相关信息通过这个 url 发送到 zipkin 服务端
+    discovery-client-enabled: false
+
+
+redisson:
+  codec: org.redisson.codec.JsonJacksonCodec
+  threads: 4
+  netty:
+    threads: 4
+  single-server-config:
+    address: ${REDISSON_ADDRESS}
+    password: ${REDIS_PASSWORD}
+    database: 0
+
+rocketmq:
+  name-server: ${MQ_NAME_SERVER}
+  producer:
+    group: ${MQ_GROUP}
+    send-message-timeout: 3000
+    retry-times-when-send-failed: 3
+    retry-times-when-send-async-failed: 3

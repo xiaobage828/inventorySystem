@@ -1,16 +1,69 @@
 is:
-  mq-host1: localhost
-  mq-port1: 9876
   host: localhost
+  mysql-port: 3306
   redis-port: 6379
   nacos-port: 8848
-#  mq-host2: localhost
-#  mq-port2: 10915
+  seata-group: SEATA_GROUP
+  sentinel-port: 8718
+  sentinel-group: SENTINEL_GROUP
+  zipkin-port: 9411
+  mq-host1: localhost
+  mq-port1: 9876
+  mq-host2: localhost
+  mq-port2: 10915
+
+
 #nacos
 nacos:
-  #dev
   namespace: 79622650-2ad0-4651-945e-82929157836f
+  addr: ${is.host}:${is.nacos-port}
+  username: nacos
+  password: nacos
 
+#sentinel
+SENTINEL_DASHBOARD: ${is.host}:${is.sentinel-port}
+
+#zipkin
+ZIPKIN_HOST: ${is.host}:${is.zipkin-port}
+
+##database
+db:
+  personnel:
+    host: ${is.host}:${is.mysql-port}
+    db-name: personnel
+    username: root
+    password: 123456
+  product:
+    host: ${is.host}:${is.mysql-port}
+    db-name: product_info
+    username: root
+    password: 123456
+  warehouse:
+    host: ${is.host}:${is.mysql-port}
+    db-name: warehouse
+    username: root
+    password: 123456
+  inventory:
+    host: ${is.host}:${is.mysql-port}
+    db-name: inventory_management
+    username: root
+    password: 123456
+  warning:
+    host: ${is.host}:${is.mysql-port}
+    db-name: inventory_warning
+    username: root
+    password: 123456
+  domain-event:
+    host: ${is.host}:${is.mysql-port}
+    db-name: domain_event
+    username: root
+    password: 123456
+
+#redis
 REDIS_PASSWORD: redis6379
+#REDISSON
+REDISSON_ADDRESS: "redis://127.0.0.1:6379"
+
+#RocketMQ
 MQ_NAME_SERVER: ${is.mq-host1}:${is.mq-port1}
 MQ_GROUP: inventory_management

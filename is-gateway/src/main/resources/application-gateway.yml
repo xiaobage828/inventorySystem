@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: is-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.addr}
+        username: ${nacos.username}
+        password: ${nacos.password}
+        namespace: ${nacos.namespace}
+    # cn.baiqi.gateway 网关
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      default-filters:
+        - name: IpRequestRateLimiter
+          args:
+            key-resolver: "#{@ipKeyResolver}"
+            redis-rate-limiter.replenishRate: 10 #字段为令牌桶恢复速度，即每秒访问个数
+            redis-rate-limiter.burstCapacity: 40 #字段为令牌桶大小，即峰值流量来临时最大可访问数
+      routes:
+        - id: service-is-personnel
+          uri: lb://is-personnel
+          predicates:
+            - Path=/is-personnel/**
+        - id: service-is-product
+          uri: lb://is-product
+          predicates:
+            - Path=/is-product/**
+        - id: service-is-warehouse
+          uri: lb://is-warehouse
+          predicates:
+            - Path=/is-warehouse/**
+        - id: service-is-domain-event
+          uri: lb://is-domain-event
+          predicates:
+            - Path=/is-domain-event/**
+        - id: service-is-inventory
+          uri: lb://is-inventory
+          predicates:
+            - Path=/is-inventory/**
+        - id: service-is-warning
+          uri: lb://is-warning
+          predicates:
+            - Path=/is-warning/**
+
+
+
+# 忽略 url 拦截
+is.global-filter:
+  ignoreUrlSet:
+    - /user/login
+    - /user/register
+    - /is-druid
+    - /test
+    - /health
+  authorization: Authorization
