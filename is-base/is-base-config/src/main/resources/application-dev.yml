@@ -1,5 +1,5 @@
 is:
-  host: localhost
+  host: host.docker.internal
   mysql-port: 3306
   redis-port: 6379
   nacos-port: 8848
@@ -7,9 +7,9 @@ is:
   sentinel-port: 8718
   sentinel-group: SENTINEL_GROUP
   zipkin-port: 9411
-  mq-host1: localhost
+  mq-host1: host.docker.internal
   mq-port1: 9876
-  mq-host2: localhost
+  mq-host2: host.docker.internal
   mq-port2: 10915
 
 
